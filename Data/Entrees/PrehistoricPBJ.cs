@@ -38,5 +38,10 @@
                 return calories;
             }
         }
+
+        /// <summary>
+        /// The name of the PBJ
+        /// </summary>
+        public string Name { get; } = "Prehistoric PBJ";
     }
 }

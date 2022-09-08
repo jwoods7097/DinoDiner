@@ -15,7 +15,14 @@ namespace DinoDiner.Data.Entrees
         /// <summary>
         /// The name of the wings
         /// </summary>
-        public string Name { get => $"{Sauce} Pterodactyl Wings"; }
+        public string Name
+        {
+            get
+            {
+                if (Sauce == WingSauce.HoneyGlaze) return "Honey Glaze Pterodactyl Wings";
+                return $"{Sauce} Pterodactyl Wings";
+            }
+        }
 
         /// <summary>
         /// Indicates the sauce on the wings

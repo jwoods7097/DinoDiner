@@ -20,7 +20,7 @@ namespace DinoDiner.Data.Drinks
         /// <summary>
         /// The serving size of the Drink
         /// </summary>
-        public abstract ServingSize Size { get; set; }
+        public ServingSize Size { get; set; }
 
         /// <summary>
         /// The price of the Drink

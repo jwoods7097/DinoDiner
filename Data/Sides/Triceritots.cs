@@ -10,22 +10,17 @@ namespace DinoDiner.Data.Sides
     /// <summary>
     /// A class representing the Triceritots tater tots
     /// </summary>
-    public class Triceritots
+    public class Triceritots : Side
     {
         /// <summary>
         /// The name of the tater tots
         /// </summary>
-        public string Name { get => $"{Size} Triceritots"; }
-
-        /// <summary>
-        /// The serving size of the tater tots
-        /// </summary>
-        public ServingSize Size { get; set; }
+        public override string Name { get => $"{Size} Triceritots"; }
 
         /// <summary>
         /// The price of the tater tots
         /// </summary>
-        public decimal Price
+        public override decimal Price
         {
             get
             {
@@ -38,7 +33,7 @@ namespace DinoDiner.Data.Sides
         /// <summary>
         /// The calories of the tater tots
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {

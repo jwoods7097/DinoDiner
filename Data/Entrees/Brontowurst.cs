@@ -9,22 +9,22 @@ namespace DinoDiner.Data.Entrees
     /// <summary>
     /// A class representing a Brontowurst brautwurst
     /// </summary>
-    public class Brontowurst
+    public class Brontowurst : Entree
     {
         /// <summary>
         /// The name of the brautwurst
         /// </summary>
-        public string Name { get; } = "Brontowurst";
+        public override string Name { get; } = "Brontowurst";
 
         /// <summary>
         /// The price of the brautwurst
         /// </summary>
-        public decimal Price { get; } = 5.86m;
+        public override decimal Price { get; } = 5.86m;
 
         /// <summary>
         /// The calories of the brautwurst
         /// </summary>
-        public uint Calories { get; } = 512;
+        public override uint Calories { get; } = 512;
 
         /// <summary>
         /// Indicates the brautwurst has onions

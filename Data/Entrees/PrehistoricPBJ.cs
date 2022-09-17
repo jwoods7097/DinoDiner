@@ -3,7 +3,7 @@
     /// <summary>
     /// A class representing a Prehistoric PBJ sandwich
     /// </summary>
-    public class PrehistoricPBJ
+    public class PrehistoricPBJ : Entree
     {
         /// <summary>
         /// Indicates if the PBJ was made with peanut butter
@@ -23,12 +23,12 @@
         /// <summary>
         /// The price of the PBJ
         /// </summary>
-        public decimal Price { get; } = 3.75m;
+        public override decimal Price { get; } = 3.75m;
 
         /// <summary>
         /// The calories of the PBJ
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -42,6 +42,6 @@
         /// <summary>
         /// The name of the PBJ
         /// </summary>
-        public string Name { get; } = "Prehistoric PBJ";
+        public override string Name { get; } = "Prehistoric PBJ";
     }
 }

@@ -10,22 +10,17 @@ namespace DinoDiner.Data.Sides
     /// <summary>
     /// A class representing Meteor Mac and Cheese
     /// </summary>
-    public class MeteorMacAndCheese
+    public class MeteorMacAndCheese : Side
     {
         /// <summary>
         /// The name of the mac and cheese
         /// </summary>
-        public string Name { get => $"{Size} Meteor Mac & Cheese"; }
-
-        /// <summary>
-        /// The serving size of the mac and cheese
-        /// </summary>
-        public ServingSize Size { get; set; }
+        public override string Name { get => $"{Size} Meteor Mac & Cheese"; }
 
         /// <summary>
         /// The price of the mac and cheese
         /// </summary>
-        public decimal Price
+        public override decimal Price
         {
             get
             {
@@ -38,7 +33,7 @@ namespace DinoDiner.Data.Sides
         /// <summary>
         /// The calories of the mac and cheese
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {

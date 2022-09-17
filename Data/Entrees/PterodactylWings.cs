@@ -10,12 +10,12 @@ namespace DinoDiner.Data.Entrees
     /// <summary>
     /// A class representing Pterodactyl Wings chicken wings
     /// </summary>
-    public class PterodactylWings
+    public class PterodactylWings : Entree
     {
         /// <summary>
         /// The name of the wings
         /// </summary>
-        public string Name
+        public override string Name
         {
             get
             {
@@ -32,12 +32,12 @@ namespace DinoDiner.Data.Entrees
         /// <summary>
         /// The price of the wings
         /// </summary>
-        public decimal Price { get; } = 8.95m;
+        public override decimal Price { get; } = 8.95m;
 
         /// <summary>
         /// The calories of the wings
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {

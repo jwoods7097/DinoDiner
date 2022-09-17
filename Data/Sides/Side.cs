@@ -20,7 +20,7 @@ namespace DinoDiner.Data.Sides
         /// <summary>
         /// The serving size of the Side
         /// </summary>
-        public abstract ServingSize Size { get; set; }
+        public ServingSize Size { get; set; }
 
         /// <summary>
         /// The price of the Side

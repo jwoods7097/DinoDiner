@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace DinoDiner.Data.Drinks
 {
     /// <summary>
-    /// A class representing the Pilosoda flavored soda
+    /// A class representing the Plilosoda soda
     /// </summary>
-    public class Pilosoda : Drink
+    public class Plilosoda : Drink
     {
         /// <summary>
         /// The name of the soda
@@ -40,9 +40,10 @@ namespace DinoDiner.Data.Drinks
                         sb.Append(" Dino Dew ");
                         break;
                     default:
-                        throw new NotImplementedException("Flavor does not exist!");
+                        sb.Append($" {Flavor} ");
+                        break;
                 }
-                sb.Append("Pilosoda");
+                sb.Append("Plilosoda");
 
                 return sb.ToString();
             }

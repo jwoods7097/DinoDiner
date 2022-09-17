@@ -14,7 +14,7 @@ namespace DinoDiner.Data.Entrees
         /// <summary>
         /// The name of the cheeseburger
         /// </summary>
-        public override string Name { get => "Carnotaurus Cheeseburger"; }
+        public override string Name { get; } = "Carnotaurus Cheeseburger";
 
         public CarnotaurusCheeseburger()
         {

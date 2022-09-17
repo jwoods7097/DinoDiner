@@ -9,22 +9,22 @@ namespace DinoDiner.Data.Entrees
     /// <summary>
     /// A class representing a VelociWraptor caesar chicken wrap
     /// </summary>
-    public class VelociWraptor
+    public class VelociWraptor : Entree
     {
         /// <summary>
         /// The name of the wrap
         /// </summary>
-        public string Name { get; } = "Veloci-Wraptor";
+        public override string Name { get; } = "Veloci-Wraptor";
 
         /// <summary>
         /// The price of the wrap
         /// </summary>
-        public decimal Price { get; } = 6.25m;
+        public override decimal Price { get; } = 6.25m;
 
         /// <summary>
         /// The calories of the wrap
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {

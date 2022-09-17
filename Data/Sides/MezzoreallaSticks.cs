@@ -10,22 +10,17 @@ namespace DinoDiner.Data.Sides
     /// <summary>
     /// A class representing the Mezzorealla Sticks mozzarealla sticks
     /// </summary>
-    public class MezzoreallaSticks
+    public class MezzoreallaSticks : Side
     {
         /// <summary>
         /// The name of the mozzarealla sticks
         /// </summary>
-        public string Name { get => $"{Size} Mezzorealla Sticks"; }
-
-        /// <summary>
-        /// The serving size of the mozzarealla sticks
-        /// </summary>
-        public ServingSize Size { get; set; }
+        public override string Name { get => $"{Size} Mezzorealla Sticks"; }
 
         /// <summary>
         /// The price of the mozzarealla sticks
         /// </summary>
-        public decimal Price
+        public override decimal Price
         {
             get
             {
@@ -38,7 +33,7 @@ namespace DinoDiner.Data.Sides
         /// <summary>
         /// The calories of the mozzarealla sticks
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {

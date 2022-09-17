@@ -10,12 +10,12 @@ namespace DinoDiner.Data.Sides
     /// <summary>
     /// A class representing Fryceritops french fries
     /// </summary>
-    public class Fryceritops
+    public class Fryceritops : Side
     {
         /// <summary>
         /// The name of the fries
         /// </summary>
-        public string Name { get => $"{Size} Fryceritops"; }
+        public override string Name { get => $"{Size} Fryceritops"; }
 
         /// <summary>
         /// Indicates that the fries are salted
@@ -28,14 +28,9 @@ namespace DinoDiner.Data.Sides
         public bool Sauce { get; set; } = false;
 
         /// <summary>
-        /// The serving size of the fries
-        /// </summary>
-        public ServingSize Size { get; set; }
-
-        /// <summary>
         /// The price of the fries
         /// </summary>
-        public decimal Price
+        public override decimal Price
         {
             get
             {
@@ -48,7 +43,7 @@ namespace DinoDiner.Data.Sides
         /// <summary>
         /// The calories of the fries
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {

@@ -14,7 +14,7 @@ namespace DinoDiner.Data.Entrees
         /// <summary>
         /// The name of the burger
         /// </summary>
-        public override string Name { get => "Deinonychus Double"; }
+        public override string Name { get; } = "Deinonychus Double";
 
         public DeinonychusDouble()
         {

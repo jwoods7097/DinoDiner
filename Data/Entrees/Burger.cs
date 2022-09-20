@@ -9,8 +9,13 @@ namespace DinoDiner.Data.Entrees
     /// <summary>
     /// A base class representing the customizable burger
     /// </summary>
-    public abstract class Burger : Entree
+    public class Burger : Entree
     {
+        /// <summary>
+        /// The name of the burger
+        /// </summary>
+        public override string Name { get; } = "Burger";
+
         /// <summary>
         /// The price of the burger
         /// </summary>
@@ -66,66 +71,66 @@ namespace DinoDiner.Data.Entrees
         /// <summary>
         /// How many patties are on the burger
         /// </summary>
-        public virtual uint Patties { get; set; }
+        public uint Patties { get; set; }
 
         /// <summary>
         /// Indicates the burger is served with ketchup
         /// </summary>
-        public virtual bool Ketchup { get; set; }
+        public bool Ketchup { get; set; }
 
         /// <summary>
         /// Indicates the burger is served with mustard
         /// </summary>
-        public virtual bool Mustard { get; set; }
+        public bool Mustard { get; set; }
 
         /// <summary>
         /// Indicates the burger is served with pickles
         /// </summary>
-        public virtual bool Pickle { get; set; }
+        public bool Pickle { get; set; }
 
         /// <summary>
         /// Indicates the burger is served with mayo
         /// </summary>
-        public virtual bool Mayo { get; set; }
+        public bool Mayo { get; set; }
 
         /// <summary>
         /// Indicates the burger is served with BBQ sauce
         /// </summary>
-        public virtual bool BBQ { get; set; }
+        public bool BBQ { get; set; }
 
         /// <summary>
         /// Indicates the burger is served with onion
         /// </summary>
-        public virtual bool Onion { get; set; }
+        public bool Onion { get; set; }
 
         /// <summary>
         /// Indicates the burger is served with tomato
         /// </summary>
-        public virtual bool Tomato { get; set; }
+        public bool Tomato { get; set; }
 
         /// <summary>
         /// Indicates the burger is served with lettuce
         /// </summary>
-        public virtual bool Lettuce { get; set; }
+        public bool Lettuce { get; set; }
 
         /// <summary>
         /// Indicates the burger is served with American cheese
         /// </summary>
-        public virtual bool AmericanCheese { get; set; }
+        public bool AmericanCheese { get; set; }
 
         /// <summary>
         /// Indicates the burger is served with Swiss cheese
         /// </summary>
-        public virtual bool SwissCheese { get; set; }
+        public bool SwissCheese { get; set; }
 
         /// <summary>
         /// Indicates the burger is served with bacon
         /// </summary>
-        public virtual bool Bacon { get; set; }
+        public bool Bacon { get; set; }
 
         /// <summary>
         /// Indicates the burger is served with mushrooms
         /// </summary>
-        public virtual bool Mushrooms { get; set; }
+        public bool Mushrooms { get; set; }
     }
 }

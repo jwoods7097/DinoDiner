@@ -1,5 +1,8 @@
 namespace DataTest
 {
+    /// <summary>
+    /// Unit Tests for PrehistoricPBJ
+    /// </summary>
     public class PrehistoricPBJUnitTest
     {
         /// <summary>
@@ -130,6 +133,42 @@ namespace DataTest
                 Toasted = toasted
             };
             Assert.Equal(calories, pbj.Calories);
+        }
+
+        /// <summary>
+        /// Name should always be "Prehistoric PBJ", regardless of how it's served
+        /// </summary>
+        /// <param name="peanutButter">If the pbj contains peanut butter</param>
+        /// <param name="jelly">If the pbj contains jelly</param>
+        /// <param name="toasted">If the pbj is toasted</param>
+        /// <param name="name">The expected name</param>
+        [Theory]
+        [InlineData(true, true, true, "Prehistoric PBJ")]
+        [InlineData(true, true, false, "Prehistoric PBJ")]
+        [InlineData(true, false, true, "Prehistoric PBJ")]
+        [InlineData(false, true, true, "Prehistoric PBJ")]
+        [InlineData(false, false, true, "Prehistoric PBJ")]
+        [InlineData(true, false, false, "Prehistoric PBJ")]
+        [InlineData(false, false, false, "Prehistoric PBJ")]
+        public void NameShouldBeCorrect(bool peanutButter, bool jelly, bool toasted, string name)
+        {
+            PrehistoricPBJ pbj = new() 
+            { 
+                PeanutButter = peanutButter,
+                Jelly = jelly,
+                Toasted = toasted
+            };
+            Assert.Equal(name, pbj.Name);
+        }
+
+        /// <summary>
+        /// PrehistoricPBJ can be cast as Entree
+        /// </summary>
+        [Fact]
+        public void PrehistoricPBJShouldInheritFromEntree()
+        {
+            PrehistoricPBJ pbj = new PrehistoricPBJ();
+            Assert.IsAssignableFrom<Entree>(pbj);
         }
     }
 }

@@ -41,9 +41,9 @@ namespace DinoDiner.Data.Entrees
         {
             get
             {
-                if (Sauce == WingSauce.Buffalo) return 360;
+                if (Sauce == WingSauce.HoneyGlaze) return 359;
                 if (Sauce == WingSauce.Teriyaki) return 342;
-                return 359;
+                return 360;
             }
         }
     }

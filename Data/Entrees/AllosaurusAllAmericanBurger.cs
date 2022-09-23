@@ -9,14 +9,14 @@ namespace DinoDiner.Data.Entrees
     /// <summary>
     /// A class representing the Allosaurus All-American Burger
     /// </summary>
-    public class AllosaurusAll_AmericanBurger : Burger
+    public class AllosaurusAllAmericanBurger : Burger
     {
         /// <summary>
         /// The name of the burger
         /// </summary>
         public override string Name { get; } = "Allosaurus All-American Burger";
 
-        public AllosaurusAll_AmericanBurger()
+        public AllosaurusAllAmericanBurger()
         {
             Patties = 1;
             Ketchup = true;

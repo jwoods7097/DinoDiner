@@ -71,7 +71,7 @@ namespace DinoDiner.Data.Entrees
         /// <summary>
         /// How many patties are on the burger
         /// </summary>
-        public uint Patties { get; set; }
+        public uint Patties { get; set; } = 1;
 
         /// <summary>
         /// Indicates the burger is served with ketchup

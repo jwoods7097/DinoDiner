@@ -1,0 +1,128 @@
+﻿<UserControl x:Class="DinoDiner.PointOfSale.MenuItemSelectionControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DinoDiner.PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="640">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="8"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0">
+            Burgers
+        </TextBlock>
+        <Button Grid.Row="1" Grid.Column="0">
+            <TextBlock>
+                Allosaurus All-American
+            </TextBlock>
+        </Button>
+        <Button Grid.Row="2" Grid.Column="0">
+            <TextBlock>
+                Carnotaurus Cheeseburger
+            </TextBlock>
+        </Button>
+        <Button Grid.Row="3" Grid.Column="0">
+            <TextBlock>
+                Deinonychus Double
+            </TextBlock>
+        </Button>
+        <Button Grid.Row="4" Grid.Column="0">
+            <TextBlock>
+                T-Rex Triple Burger
+            </TextBlock>
+        </Button>
+        
+        <TextBlock Grid.Row="0" Grid.Column="1">
+            Other Entrees
+        </TextBlock>
+        <Button Grid.Row="1" Grid.Column="1">
+            <TextBlock>
+                Brontowurst
+            </TextBlock>
+        </Button>
+        <Button Grid.Row="2" Grid.Column="1">
+            <TextBlock>
+                Prehistoric PBJ
+            </TextBlock>
+        </Button>
+        <Button Grid.Row="3" Grid.Column="1">
+            <TextBlock>
+                Pterodactyl Wings
+            </TextBlock>
+        </Button>
+        <Button Grid.Row="4" Grid.Column="1">
+            <TextBlock>
+                Veloci-Wraptor
+            </TextBlock>
+        </Button>
+        <Button Grid.Row="5" Grid.Column="1">
+            <TextBlock>
+                Dino Nuggets
+            </TextBlock>
+        </Button>
+        
+        <TextBlock Grid.Row="0" Grid.Column="2">
+            Sides
+        </TextBlock>
+        <Button Grid.Row="1" Grid.Column="2">
+            <TextBlock>
+                Fryceritops
+            </TextBlock>
+        </Button>
+        <Button Grid.Row="2" Grid.Column="2">
+            <TextBlock>
+                Meteor Mac &amp; Cheese
+            </TextBlock>
+        </Button>
+        <Button Grid.Row="3" Grid.Column="2">
+            <TextBlock>
+                Mezzorella Sticks
+            </TextBlock>
+        </Button>
+        <Button Grid.Row="4" Grid.Column="2">
+            <TextBlock>
+                Triceritots
+            </TextBlock>
+        </Button>
+
+        <TextBlock Grid.Row="6" Grid.Column="0">
+            Drinks
+        </TextBlock>
+        <Button Grid.Row="7" Grid.Column="0">
+            <TextBlock>
+                Plilosoda
+            </TextBlock>
+        </Button>
+        <Button Grid.Row="7" Grid.Column="1">
+            <TextBlock>
+                Cretaceous Coffee
+            </TextBlock>
+        </Button>
+    </Grid>
+</UserControl>

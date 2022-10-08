@@ -33,10 +33,10 @@
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="30" Margin="20,0,0,0">
             Toppings:
         </TextBlock>
-        <CheckBox Grid.Row="1" Grid.Column="0">
+        <CheckBox Name="OnionsCheckBox" Grid.Row="1" Grid.Column="0">
             Onions
         </CheckBox>
-        <CheckBox Grid.Row="2" Grid.Column="0">
+        <CheckBox Name="PeppersCheckBox" Grid.Row="2" Grid.Column="0">
             Peppers
         </CheckBox>
     </Grid>

@@ -35,13 +35,13 @@
         <TextBlock Grid.Row="0" TextAlignment="Left" FontSize="30" Margin="20,0,0,0">
             Options:
         </TextBlock>
-        <CheckBox Grid.Row="1" Grid.Column="0">
+        <CheckBox Name="SaltCheckBox" Grid.Row="1" Grid.Column="0">
             Salt
         </CheckBox>
-        <CheckBox Grid.Row="2" Grid.Column="0">
+        <CheckBox Name="SauceCheckBox" Grid.Row="2" Grid.Column="0">
             Sauce
         </CheckBox>
         
-        <local:SizeSelectionControl Grid.Column="1" Grid.RowSpan="4"/>
+        <local:SizeSelectionControl x:Name="SizeSelect" Grid.Column="1" Grid.RowSpan="4"/>
     </Grid>
 </UserControl>

@@ -32,15 +32,13 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.ColumnSpan="2" Style="{StaticResource headerTextStyle}">
+        <TextBlock Name="ItemNameTextBlock" Grid.ColumnSpan="2" Style="{StaticResource headerTextStyle}">
             Customize [Item Name]
         </TextBlock>
-        <!--Insert specific item customization here-->
-        <local:BurgerCustomizationControl Grid.Row="1" Grid.ColumnSpan="2"/>
-        <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource textStyle}">
+        <TextBlock Name="CaloriesTextBlock" Grid.Row="2" Grid.Column="0" Style="{StaticResource textStyle}">
             Calories: 0
         </TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource textStyle}">
+        <TextBlock Name="PriceTextBlock" Grid.Row="2" Grid.Column="1" Style="{StaticResource textStyle}">
             Price: $0.00
         </TextBlock>
     </Grid>

@@ -37,27 +37,27 @@
         <TextBlock Grid.Row="0" Grid.Column="0">
             Burgers
         </TextBlock>
-        <Button Grid.Row="1" Grid.Column="0">
+        <Button Name="AllosaurusAllAmericanButton" Grid.Row="1" Grid.Column="0">
             <TextBlock>
                 Allosaurus All-American
             </TextBlock>
         </Button>
-        <Button Grid.Row="2" Grid.Column="0">
+        <Button Name="CarnotaurusCheeseburgerButton" Grid.Row="2" Grid.Column="0">
             <TextBlock>
                 Carnotaurus Cheeseburger
             </TextBlock>
         </Button>
-        <Button Grid.Row="3" Grid.Column="0">
+        <Button Name="DeinonychusDoubleButton" Grid.Row="3" Grid.Column="0">
             <TextBlock>
                 Deinonychus Double
             </TextBlock>
         </Button>
-        <Button Grid.Row="4" Grid.Column="0">
+        <Button Name="TRexTripleBurgerButton" Grid.Row="4" Grid.Column="0">
             <TextBlock>
                 T-Rex Triple Burger
             </TextBlock>
         </Button>
-        <Button Grid.Row="5" Grid.Column="0">
+        <Button Name="CustomBurgerButton" Grid.Row="5" Grid.Column="0">
             <TextBlock>
                 Custom Burger
             </TextBlock>
@@ -66,27 +66,27 @@
         <TextBlock Grid.Row="0" Grid.Column="1">
             Other Entrees
         </TextBlock>
-        <Button Grid.Row="1" Grid.Column="1">
+        <Button Name="BrontowurstButton" Grid.Row="1" Grid.Column="1">
             <TextBlock>
                 Brontowurst
             </TextBlock>
         </Button>
-        <Button Grid.Row="2" Grid.Column="1">
+        <Button Name="PrehistoricPBJButton" Grid.Row="2" Grid.Column="1">
             <TextBlock>
                 Prehistoric PBJ
             </TextBlock>
         </Button>
-        <Button Grid.Row="3" Grid.Column="1">
+        <Button Name="PterodactylWingsButton" Grid.Row="3" Grid.Column="1">
             <TextBlock>
                 Pterodactyl Wings
             </TextBlock>
         </Button>
-        <Button Grid.Row="4" Grid.Column="1">
+        <Button Name="VelociWraptorButton" Grid.Row="4" Grid.Column="1">
             <TextBlock>
                 Veloci-Wraptor
             </TextBlock>
         </Button>
-        <Button Grid.Row="5" Grid.Column="1">
+        <Button Name="DinoNuggetsButton" Grid.Row="5" Grid.Column="1">
             <TextBlock>
                 Dino Nuggets
             </TextBlock>
@@ -95,22 +95,22 @@
         <TextBlock Grid.Row="0" Grid.Column="2">
             Sides
         </TextBlock>
-        <Button Grid.Row="1" Grid.Column="2">
+        <Button Name="FryceritopsButton" Grid.Row="1" Grid.Column="2">
             <TextBlock>
                 Fryceritops
             </TextBlock>
         </Button>
-        <Button Grid.Row="2" Grid.Column="2">
+        <Button Name="MeteorMacAndCheeseButton" Grid.Row="2" Grid.Column="2">
             <TextBlock>
                 Meteor Mac &amp; Cheese
             </TextBlock>
         </Button>
-        <Button Grid.Row="3" Grid.Column="2">
+        <Button Name="MezzorellaSticksButton" Grid.Row="3" Grid.Column="2">
             <TextBlock>
                 Mezzorella Sticks
             </TextBlock>
         </Button>
-        <Button Grid.Row="4" Grid.Column="2">
+        <Button Name="TriceritotsButton" Grid.Row="4" Grid.Column="2">
             <TextBlock>
                 Triceritots
             </TextBlock>
@@ -119,12 +119,12 @@
         <TextBlock Grid.Row="6" Grid.Column="0">
             Drinks
         </TextBlock>
-        <Button Grid.Row="7" Grid.Column="0">
+        <Button Name="PlilosodaButton" Grid.Row="7" Grid.Column="0">
             <TextBlock>
                 Plilosoda
             </TextBlock>
         </Button>
-        <Button Grid.Row="7" Grid.Column="1">
+        <Button Name="CretaceousCoffeeButton" Grid.Row="7" Grid.Column="1">
             <TextBlock>
                 Cretaceous Coffee
             </TextBlock>

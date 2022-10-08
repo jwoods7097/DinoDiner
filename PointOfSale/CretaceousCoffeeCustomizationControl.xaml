@@ -34,10 +34,10 @@
         <TextBlock Grid.Row="0" TextAlignment="Left" FontSize="30" Margin="20,0,0,0">
             Options:
         </TextBlock>
-        <CheckBox Grid.Row="1" Grid.Column="0">
+        <CheckBox Name="CreamCheckBox" Grid.Row="1" Grid.Column="0">
             Cream
         </CheckBox>
 
-        <local:SizeSelectionControl Grid.Column="1" Grid.RowSpan="4"/>
+        <local:SizeSelectionControl x:Name="SizeSelect" Grid.Column="1" Grid.RowSpan="4"/>
     </Grid>
 </UserControl>

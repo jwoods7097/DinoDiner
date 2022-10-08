@@ -36,34 +36,34 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource headingTextStyle}">
+        <TextBlock Name="OrderTextBlock" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource headingTextStyle}">
             Order #00
         </TextBlock>
         
-        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource headingTextStyle}">
+        <TextBlock Name="DateTextBlock" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource headingTextStyle}">
             10/7/2022
         </TextBlock>
         
-        <ListView Grid.Row="2" Grid.ColumnSpan="2"/>
+        <ListView Name="OrderListView" Grid.Row="2" Grid.ColumnSpan="2"/>
 
         <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource summaryTextStyle}">
             Subtotal
         </TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="1" Style="{StaticResource priceTextStyle}">
+        <TextBlock Name="SubtotalTextBlock" Grid.Row="3" Grid.Column="1" Style="{StaticResource priceTextStyle}">
             $0.00
         </TextBlock>
         
         <TextBlock Grid.Row="4" Grid.Column="0" Style="{StaticResource summaryTextStyle}">
             Tax
         </TextBlock>
-        <TextBlock Grid.Row="4" Grid.Column="1" Style="{StaticResource priceTextStyle}">
+        <TextBlock Name="TaxTextBlock" Grid.Row="4" Grid.Column="1" Style="{StaticResource priceTextStyle}">
             $0.00
         </TextBlock>
         
         <TextBlock Grid.Row="5" Grid.Column="0" Style="{StaticResource summaryTextStyle}">
             Total
         </TextBlock>
-        <TextBlock Grid.Row="5" Grid.Column="1" Style="{StaticResource priceTextStyle}">
+        <TextBlock Name="TotalTextBlock" Grid.Row="5" Grid.Column="1" Style="{StaticResource priceTextStyle}">
             $0.00
         </TextBlock>
     </Grid>

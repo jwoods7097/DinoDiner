@@ -34,13 +34,13 @@
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="30" Margin="20,0,0,0">
             Sauce:
         </TextBlock>
-        <RadioButton Grid.Row="1" GroupName="Sauce">
+        <RadioButton Name="BuffaloRadioButton" Grid.Row="1" GroupName="Sauce">
             Buffalo
         </RadioButton>
-        <RadioButton Grid.Row="2" GroupName="Sauce">
+        <RadioButton Name="TeriyakiRadioButton" Grid.Row="2" GroupName="Sauce">
             Teriyaki
         </RadioButton>
-        <RadioButton Grid.Row="3" GroupName="Sauce">
+        <RadioButton Name="HoneyGlazeRadioButton" Grid.Row="3" GroupName="Sauce">
             Honey Glaze
         </RadioButton>
     </Grid>

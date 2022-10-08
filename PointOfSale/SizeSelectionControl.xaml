@@ -28,13 +28,13 @@
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="30" Margin="20,0,0,0">
             Size:
         </TextBlock>
-        <RadioButton Grid.Row="1" GroupName="Size">
+        <RadioButton Name="SmallRadioButton" Grid.Row="1" GroupName="Size">
             Small
         </RadioButton>
-        <RadioButton Grid.Row="2" GroupName="Size">
+        <RadioButton Name="MediumRadioButton" Grid.Row="2" GroupName="Size">
             Medium
         </RadioButton>
-        <RadioButton Grid.Row="3" GroupName="Size">
+        <RadioButton Name="LargeRadioButton" Grid.Row="3" GroupName="Size">
             Large
         </RadioButton>
     </Grid>

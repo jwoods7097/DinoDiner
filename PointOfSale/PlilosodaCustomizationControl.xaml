@@ -37,22 +37,22 @@
         <TextBlock Grid.Row="0" TextAlignment="Left" FontSize="30" Margin="20,0,0,0">
             Flavor:
         </TextBlock>
-        <RadioButton Grid.Row="1" GroupName="Flavor">
+        <RadioButton Name="ColaRadioButton" Grid.Row="1" GroupName="Flavor">
             Cola
         </RadioButton>
-        <RadioButton Grid.Row="2" GroupName="Flavor">
+        <RadioButton Name="CherryColaRadioButton" Grid.Row="2" GroupName="Flavor">
             Cherry Cola
         </RadioButton>
-        <RadioButton Grid.Row="3" GroupName="Flavor">
+        <RadioButton Name="DoctorDinoRadioButton" Grid.Row="3" GroupName="Flavor">
             Doctor Dino
         </RadioButton>
-        <RadioButton Grid.Row="4" GroupName="Flavor">
+        <RadioButton Name="LemonLimeRadioButton" Grid.Row="4" GroupName="Flavor">
             Lemon-Lime
         </RadioButton>
-        <RadioButton Grid.Row="5" GroupName="Flavor">
+        <RadioButton Name="DinoDewRadioButton" Grid.Row="5" GroupName="Flavor">
             Dino Dew
         </RadioButton>
 
-        <local:SizeSelectionControl Grid.Column="1" Grid.RowSpan="4"/>
+        <local:SizeSelectionControl x:Name="SizeSelect" Grid.Column="1" Grid.RowSpan="4"/>
     </Grid>
 </UserControl>

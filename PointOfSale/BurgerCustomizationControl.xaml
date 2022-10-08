@@ -38,45 +38,45 @@
         <TextBlock TextAlignment="Right" VerticalAlignment="Center" FontSize="30" Margin="0,0,20,0">
             Patties:    
         </TextBlock>
-        <local:NumberSelectionControl Grid.Column="1" HorizontalAlignment="Left"/>
+        <local:NumberSelectionControl x:Name="PattiesSelect" Grid.Column="1" HorizontalAlignment="Left"/>
 
         <TextBlock Grid.Row="1" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="30" Margin="20,0,0,0">
             Toppings:
         </TextBlock>
-        <CheckBox Grid.Row="2" Grid.Column="0">
+        <CheckBox Name="KetchupCheckBox" Grid.Row="2" Grid.Column="0">
             Ketchup
         </CheckBox>
-        <CheckBox Grid.Row="3" Grid.Column="0">
+        <CheckBox Name="MustardCheckBox" Grid.Row="3" Grid.Column="0">
             Mustard
         </CheckBox>
-        <CheckBox Grid.Row="4" Grid.Column="0">
+        <CheckBox Name="MayoCheckBox" Grid.Row="4" Grid.Column="0">
             Mayo
         </CheckBox>
-        <CheckBox Grid.Row="5" Grid.Column="0">
+        <CheckBox Name="BBQCheckBox" Grid.Row="5" Grid.Column="0">
             BBQ
         </CheckBox>
-        <CheckBox Grid.Row="6" Grid.Column="0">
+        <CheckBox Name="AmericanCheeseCheckBox" Grid.Row="6" Grid.Column="0">
             American Cheese
         </CheckBox>
-        <CheckBox Grid.Row="7" Grid.Column="0">
+        <CheckBox Name="SwissCheeseCheckBox" Grid.Row="7" Grid.Column="0">
             Swiss Cheese
         </CheckBox>
-        <CheckBox Grid.Row="2" Grid.Column="1">
+        <CheckBox Name="LettuceCheckBox" Grid.Row="2" Grid.Column="1">
             Lettuce
         </CheckBox>
-        <CheckBox Grid.Row="3" Grid.Column="1">
+        <CheckBox Name="TomatoCheckBox" Grid.Row="3" Grid.Column="1">
             Tomato
         </CheckBox>
-        <CheckBox Grid.Row="4" Grid.Column="1">
+        <CheckBox Name="OnionCheckBox" Grid.Row="4" Grid.Column="1">
             Onion
         </CheckBox>
-        <CheckBox Grid.Row="5" Grid.Column="1">
+        <CheckBox Name="PickleCheckBox" Grid.Row="5" Grid.Column="1">
             Pickle
         </CheckBox>
-        <CheckBox Grid.Row="6" Grid.Column="1">
+        <CheckBox Name="BaconCheckBox" Grid.Row="6" Grid.Column="1">
             Bacon
         </CheckBox>
-        <CheckBox Grid.Row="7" Grid.Column="1">
+        <CheckBox Name="MushroomsCheckBox" Grid.Row="7" Grid.Column="1">
             Mushrooms
         </CheckBox>
     </Grid>

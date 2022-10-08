@@ -57,6 +57,11 @@
                 T-Rex Triple Burger
             </TextBlock>
         </Button>
+        <Button Grid.Row="5" Grid.Column="0">
+            <TextBlock>
+                Custom Burger
+            </TextBlock>
+        </Button>
         
         <TextBlock Grid.Row="0" Grid.Column="1">
             Other Entrees

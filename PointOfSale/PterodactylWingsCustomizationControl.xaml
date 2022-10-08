@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="DinoDiner.PointOfSale.PterodactylWingsCustomizationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DinoDiner.PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="640">
+    <!--Options to customize Pterodactyl Wings-->
+    <UserControl.Resources>
+        <ScaleTransform x:Key="enlarge" ScaleX="2" ScaleY="2"/>
+        <Style TargetType="RadioButton">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="20,0,0,0"/>
+            <Setter Property="LayoutTransform" Value="{StaticResource enlarge}"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <!--Extraneous definitions are to maintain consistent format with other controls-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="30" Margin="20,0,0,0">
+            Sauce:
+        </TextBlock>
+        <RadioButton Grid.Row="1" GroupName="Sauce">
+            Buffalo
+        </RadioButton>
+        <RadioButton Grid.Row="2" GroupName="Sauce">
+            Teriyaki
+        </RadioButton>
+        <RadioButton Grid.Row="3" GroupName="Sauce">
+            Honey Glaze
+        </RadioButton>
+    </Grid>
+</UserControl>

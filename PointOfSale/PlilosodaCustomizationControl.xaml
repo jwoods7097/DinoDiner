@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="DinoDiner.PointOfSale.PlilosodaCustomizationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DinoDiner.PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="640">
+    <!---Options to customize a Side-->
+    <UserControl.Resources>
+        <ScaleTransform x:Key="enlarge" ScaleX="2" ScaleY="2"/>
+        <Style TargetType="RadioButton">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="20,0,0,0"/>
+            <Setter Property="LayoutTransform" Value="{StaticResource enlarge}"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <!--Extraneous definitions are to maintain consistent format with other controls-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <!--These options will only be visible if Fryceritops was selected-->
+        <TextBlock Grid.Row="0" TextAlignment="Left" FontSize="30" Margin="20,0,0,0">
+            Flavor:
+        </TextBlock>
+        <RadioButton Grid.Row="1" GroupName="Flavor">
+            Cola
+        </RadioButton>
+        <RadioButton Grid.Row="2" GroupName="Flavor">
+            Cherry Cola
+        </RadioButton>
+        <RadioButton Grid.Row="3" GroupName="Flavor">
+            Doctor Dino
+        </RadioButton>
+        <RadioButton Grid.Row="4" GroupName="Flavor">
+            Lemon-Lime
+        </RadioButton>
+        <RadioButton Grid.Row="5" GroupName="Flavor">
+            Dino Dew
+        </RadioButton>
+
+        <local:SizeSelectionControl Grid.Column="1" Grid.RowSpan="4"/>
+    </Grid>
+</UserControl>

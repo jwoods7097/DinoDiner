@@ -41,7 +41,7 @@
         </TextBlock>
         
         <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource headingTextStyle}">
-            1/1/1970
+            10/7/2022
         </TextBlock>
         
         <ListView Grid.Row="2" Grid.ColumnSpan="2"/>

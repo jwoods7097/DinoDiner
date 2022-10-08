@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="DinoDiner.PointOfSale.ItemCustomizationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DinoDiner.PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="640">
+    <!--Base window for all item customization screens.-->
+    <!--Depending on what item was selected, its customization-->
+    <!--controls will be inserted in the blank space.-->
+    <UserControl.Resources>
+        <Style x:Key="headerTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="48"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="textStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.ColumnSpan="2" Style="{StaticResource headerTextStyle}">
+            Customize [Item Name]
+        </TextBlock>
+        <!--Insert specific item customization here-->
+        <local:BurgerCustomizationControl Grid.Row="1" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource textStyle}">
+            Calories: 0
+        </TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource textStyle}">
+            Price: $0.00
+        </TextBlock>
+    </Grid>
+</UserControl>

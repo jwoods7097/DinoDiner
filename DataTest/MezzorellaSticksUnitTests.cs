@@ -1,22 +1,22 @@
 ﻿namespace DataTest
 {
     /// <summary>
-    /// Unit Tests for MezzoreallaSticks
+    /// Unit Tests for MezzorellaSticks
     /// </summary>
-    public class MezzoreallaSticksUnitTests
+    public class MezzorellaSticksUnitTests
     {
         /// <summary>
-        /// MezzoreallaSticks can be cast as Side
+        /// MezzorellaSticks can be cast as Side
         /// </summary>
         [Fact]
         public void ShouldInheritFromSide()
         {
-            MezzoreallaSticks ms = new();
+            MezzorellaSticks ms = new();
             Assert.IsAssignableFrom<Side>(ms);
         }
 
         /// <summary>
-        /// Name should vary depending on the size of the MezzoreallaSticks
+        /// Name should vary depending on the size of the MezzorellaSticks
         /// </summary>
         /// <param name="size">The serving size</param>
         /// <param name="name">The expected name</param>
@@ -26,13 +26,13 @@
         [InlineData(ServingSize.Large, "Large Mezzorealla Sticks")]
         public void NameShouldBeCorrect(ServingSize size, string name)
         {
-            MezzoreallaSticks ms = new();
+            MezzorellaSticks ms = new();
             ms.Size = size;
             Assert.Equal(name, ms.Name);
         }
 
         /// <summary>
-        /// Price should vary depending on the serving size of the MezzoreallaSticks
+        /// Price should vary depending on the serving size of the MezzorellaSticks
         /// </summary>
         /// <param name="size">The serving size</param>
         /// <param name="price">The expected price</param>
@@ -42,13 +42,13 @@
         [InlineData(ServingSize.Large, 5.25)]
         public void PriceShouldBeCorrect(ServingSize size, decimal price)
         {
-            MezzoreallaSticks ms = new();
+            MezzorellaSticks ms = new();
             ms.Size = size;
             Assert.Equal(price, ms.Price);
         }
 
         /// <summary>
-        /// Calories should vary depending on how the MezzoreallaSticks is served
+        /// Calories should vary depending on how the MezzorellaSticks is served
         /// </summary>
         /// <param name="size">The serving size</param>
         /// <param name="calories">The expected calories</param>
@@ -58,7 +58,7 @@
         [InlineData(ServingSize.Large, 730)]
         public void CaloriesShouldBeCorrect(ServingSize size, uint calories)
         {
-            MezzoreallaSticks ms = new();
+            MezzorellaSticks ms = new();
             ms.Size = size;
             Assert.Equal(calories, ms.Calories);
         }
@@ -73,7 +73,7 @@
         [InlineData(ServingSize.Large)]
         public void ShouldBeAbleToSetSize(ServingSize size)
         {
-            MezzoreallaSticks ms = new();
+            MezzorellaSticks ms = new();
             ms.Size = size;
             Assert.Equal(size, ms.Size);
         }

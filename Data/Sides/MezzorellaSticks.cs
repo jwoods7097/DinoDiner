@@ -10,12 +10,12 @@ namespace DinoDiner.Data.Sides
     /// <summary>
     /// A class representing the Mezzorealla Sticks mozzarealla sticks
     /// </summary>
-    public class MezzoreallaSticks : Side
+    public class MezzorellaSticks : Side
     {
         /// <summary>
         /// The name of the mozzarealla sticks
         /// </summary>
-        public override string Name { get => $"{Size} Mezzorealla Sticks"; }
+        public override string Name { get => $"{Size} Mezzorella Sticks"; }
 
         /// <summary>
         /// The price of the mozzarealla sticks

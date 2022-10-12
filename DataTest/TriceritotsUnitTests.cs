@@ -77,5 +77,37 @@
             tt.Size = size;
             Assert.Equal(size, tt.Size);
         }
+
+        /// <summary>
+        /// Triceritots should implement the INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyChanged()
+        {
+            Triceritots tt = new();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(tt);
+        }
+
+        /// <summary>
+        /// Changing Size should notify changes of Size, Name, Price, and Calories properties
+        /// </summary>
+        /// <param name="size">The size of the Triceritots</param>
+        /// <param name="propertyName">The property that should be notified</param>
+        [Theory]
+        [InlineData(ServingSize.Medium, "Size")]
+        [InlineData(ServingSize.Medium, "Name")]
+        [InlineData(ServingSize.Medium, "Price")]
+        [InlineData(ServingSize.Medium, "Calories")]
+        [InlineData(ServingSize.Large, "Size")]
+        [InlineData(ServingSize.Large, "Name")]
+        [InlineData(ServingSize.Large, "Price")]
+        [InlineData(ServingSize.Large, "Calories")]
+        public void ChangingSizeShouldNotifyOfPropertyChanges(ServingSize size, string propertyName)
+        {
+            Triceritots tt = new();
+            Assert.PropertyChanged(tt, propertyName, () => {
+                tt.Size = size;
+            });
+        }
     }
 }

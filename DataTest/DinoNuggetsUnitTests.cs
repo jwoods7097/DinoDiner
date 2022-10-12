@@ -113,5 +113,37 @@
             dn.Count = count;
             Assert.Equal(count, dn.Count);
         }
+
+        /// <summary>
+        /// DinoNuggets should implement the INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyChanged()
+        {
+            DinoNuggets dn = new();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(dn);
+        }
+
+        /// <summary>
+        /// Changing Count should notify changes of Count, Name, Price, and Calories properties
+        /// </summary>
+        /// <param name="count">How many Dino Nuggets</param>
+        /// <param name="propertyName">The property that should be notified</param>
+        [Theory]
+        [InlineData(12, "Count")]
+        [InlineData(12, "Name")]
+        [InlineData(12, "Price")]
+        [InlineData(12, "Calories")]
+        [InlineData(4, "Count")]
+        [InlineData(4, "Name")]
+        [InlineData(4, "Price")]
+        [InlineData(4, "Calories")]
+        public void ChangingCountShouldNotifyOfPropertyChanges(uint count, string propertyName)
+        {
+            DinoNuggets dn = new();
+            Assert.PropertyChanged(dn, propertyName, () => {
+                dn.Count = count;
+            });
+        }
     }
 }

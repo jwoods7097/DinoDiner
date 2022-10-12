@@ -130,5 +130,72 @@
             ft.Sauce = false;
             Assert.False(ft.Sauce);
         }
+
+        /// <summary>
+        /// Fryceritops should implement the INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyChanged()
+        {
+            Fryceritops ft = new();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(ft);
+        }
+
+        /// <summary>
+        /// Changing Size should notify changes of Size, Name, Price, and Calories properties
+        /// </summary>
+        /// <param name="size">The size of the Fryceritops</param>
+        /// <param name="propertyName">The property that should be notified</param>
+        [Theory]
+        [InlineData(ServingSize.Medium, "Size")]
+        [InlineData(ServingSize.Medium, "Name")]
+        [InlineData(ServingSize.Medium, "Price")]
+        [InlineData(ServingSize.Medium, "Calories")]
+        [InlineData(ServingSize.Large, "Size")]
+        [InlineData(ServingSize.Large, "Name")]
+        [InlineData(ServingSize.Large, "Price")]
+        [InlineData(ServingSize.Large, "Calories")]
+        public void ChangingSizeShouldNotifyOfPropertyChanges(ServingSize size, string propertyName)
+        {
+            Fryceritops ft = new();
+            Assert.PropertyChanged(ft, propertyName, () => {
+                ft.Size = size;
+            });
+        }
+
+        /// <summary>
+        /// Changing Salt should notify changes of Toasted property
+        /// </summary>
+        /// <param name="salt">Indicates the fries are salted</param>
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void ChangingSaltShouldNotifyOfPropertyChanges(bool salt)
+        {
+            Fryceritops ft = new();
+            ft.Salt = !salt; // Ensures the property will always be set
+            Assert.PropertyChanged(ft, "Salt", () => {
+                ft.Salt = salt;
+            });
+        }
+
+        /// <summary>
+        /// Changing Sauce should notify changes of Sauce and Calories properties
+        /// </summary>
+        /// <param name="sauce">Indicates the fries are served with fry sauce</param>
+        /// <param name="propertyName">The property that should be notified</param>
+        [Theory]
+        [InlineData(true, "Sauce")]
+        [InlineData(false, "Sauce")]
+        [InlineData(true, "Calories")]
+        [InlineData(false, "Calories")]
+        public void ChangingSauceShouldNotifyOfPropertyChanges(bool sauce, string propertyName)
+        {
+            Fryceritops ft = new();
+            ft.Sauce = !sauce; // Ensures the property will always be set
+            Assert.PropertyChanged(ft, propertyName, () => {
+                ft.Sauce = sauce;
+            });
+        }
     }
 }

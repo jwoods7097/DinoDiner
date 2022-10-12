@@ -108,5 +108,62 @@
             ps.Flavor = flavor;
             Assert.Equal(flavor, ps.Flavor);
         }
+
+        /// <summary>
+        /// Plilosoda should implement the INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyChanged()
+        {
+            Plilosoda ps = new();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(ps);
+        }
+
+        /// <summary>
+        /// Changing Size should notify changes of Size, Name, Price, and Calories properties
+        /// </summary>
+        /// <param name="size">The size of the Plilosoda</param>
+        /// <param name="propertyName">The property that should be notified</param>
+        [Theory]
+        [InlineData(ServingSize.Medium, "Size")]
+        [InlineData(ServingSize.Medium, "Name")]
+        [InlineData(ServingSize.Medium, "Price")]
+        [InlineData(ServingSize.Medium, "Calories")]
+        [InlineData(ServingSize.Large, "Size")]
+        [InlineData(ServingSize.Large, "Name")]
+        [InlineData(ServingSize.Large, "Price")]
+        [InlineData(ServingSize.Large, "Calories")]
+        public void ChangingSizeShouldNotifyOfPropertyChanges(ServingSize size, string propertyName)
+        {
+            Plilosoda ps = new();
+            Assert.PropertyChanged(ps, propertyName, () => {
+                ps.Size = size;
+            });
+        }
+
+        /// <summary>
+        /// Changing Flavor should notify changes of Flavor and Calories properties
+        /// </summary>
+        /// <param name="flavor">The flavor of the Plilosoda</param>
+        /// <param name="propertyName">The property that should be notified</param>
+        [Theory]
+        [InlineData(SodaFlavor.Cola, "Flavor")]
+        [InlineData(SodaFlavor.Cola, "Calories")]
+        [InlineData(SodaFlavor.CherryCola, "Flavor")]
+        [InlineData(SodaFlavor.CherryCola, "Calories")]
+        [InlineData(SodaFlavor.DoctorDino, "Flavor")]
+        [InlineData(SodaFlavor.DoctorDino, "Calories")]
+        [InlineData(SodaFlavor.LemonLime, "Flavor")]
+        [InlineData(SodaFlavor.LemonLime, "Calories")]
+        [InlineData(SodaFlavor.DinoDew, "Flavor")]
+        [InlineData(SodaFlavor.DinoDew, "Calories")]
+        public void ChangingFlavorShouldNotifyOfPropertyChanges(SodaFlavor flavor, string propertyName)
+        {
+            Plilosoda ps = new();
+            ps.Flavor = (SodaFlavor)10; // Ensures the property will always be set
+            Assert.PropertyChanged(ps, propertyName, () => {
+                ps.Flavor = flavor;
+            });
+        }
     }
 }

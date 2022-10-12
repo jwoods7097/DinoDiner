@@ -123,5 +123,47 @@
             bw.Peppers = true;
             Assert.True(bw.Peppers);
         }
+
+        /// <summary>
+        /// Brontowurst should implement the INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyChanged()
+        {
+            Brontowurst bw = new();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(bw);
+        }
+
+        /// <summary>
+        /// Changing Onions should notify changes of Onions property
+        /// </summary>
+        /// <param name="onions">Indicates the Brontowurst is served with onions</param>
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void ChangingOnionsShouldNotifyOfPropertyChanges(bool onions)
+        {
+            Brontowurst bw = new();
+            bw.Onions = !onions; // Ensures the property will always be set
+            Assert.PropertyChanged(bw, "Onions", () => {
+                bw.Onions = onions;
+            });
+        }
+
+        /// <summary>
+        /// Changing Peppers should notify changes of Peppers property
+        /// </summary>
+        /// <param name="peppers">Indicates the Brontowurst is served with peppers</param>
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void ChangingPeppersShouldNotifyOfPropertyChanges(bool peppers)
+        {
+            Brontowurst bw = new();
+            bw.Peppers = !peppers; // Ensures the property will always be set
+            Assert.PropertyChanged(bw, "Peppers", () => {
+                bw.Peppers = peppers;
+            });
+        }
     }
 }

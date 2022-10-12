@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DinoDiner.Data.Enums;
+using System.ComponentModel;
 
 namespace DinoDiner.Data.Sides
 {
@@ -20,12 +21,45 @@ namespace DinoDiner.Data.Sides
         /// <summary>
         /// Indicates that the fries are salted
         /// </summary>
-        public bool Salt { get; set; } = true;
+        private bool _salt = true;
+
+        /// <summary>
+        /// Public property for _salt, invokes PropertyChanged for necessary properties
+        /// </summary>
+        public bool Salt
+        {
+            get => _salt;
+            set
+            {
+                if(_salt != value)
+                {
+                    _salt = value;
+                    OnPropertyChanged(nameof(Salt));
+                }
+            }
+        }
 
         /// <summary>
         /// Indicates that the fries are served with fry sauce
         /// </summary>
-        public bool Sauce { get; set; } = false;
+        private bool _sauce = false;
+
+        /// <summary>
+        /// Public property for _sauce, invokes PropertyChanged for necessary properties
+        /// </summary>
+        public bool Sauce
+        {
+            get => _sauce;
+            set
+            {
+                if (_sauce != value)
+                {
+                    _sauce = value;
+                    OnPropertyChanged(nameof(Sauce));
+                    OnPropertyChanged(nameof(Calories));
+                }
+            }
+        }
 
         /// <summary>
         /// The price of the fries

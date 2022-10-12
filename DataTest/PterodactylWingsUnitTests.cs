@@ -93,5 +93,39 @@
             pw.Sauce = sauce;
             Assert.Equal(sauce, pw.Sauce);
         }
+
+        /// <summary>
+        /// PterodactylWings should implement the INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyChanged()
+        {
+            PterodactylWings pw = new();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(pw);
+        }
+
+        /// <summary>
+        /// Changing Sauce should notify changes of Sauce, Name, and Calories properties
+        /// </summary>
+        /// <param name="sauce">Indicates the sauce on the wings</param>
+        /// <param name="propertyName">The property that should be notified</param>
+        [Theory]
+        [InlineData(WingSauce.Buffalo, "Sauce")]
+        [InlineData(WingSauce.Buffalo, "Calories")]
+        [InlineData(WingSauce.Buffalo, "Name")]
+        [InlineData(WingSauce.Teriyaki, "Sauce")]
+        [InlineData(WingSauce.Teriyaki, "Calories")]
+        [InlineData(WingSauce.Teriyaki, "Name")]
+        [InlineData(WingSauce.HoneyGlaze, "Sauce")]
+        [InlineData(WingSauce.HoneyGlaze, "Calories")]
+        [InlineData(WingSauce.HoneyGlaze, "Name")]
+        public void ChangingSauceShouldNotifyOfPropertyChanges(WingSauce sauce, string propertyName)
+        {
+            PterodactylWings pw = new();
+            pw.Sauce = (WingSauce)10; // Ensures the property will always be set
+            Assert.PropertyChanged(pw, propertyName, () => {
+                pw.Sauce = sauce;
+            });
+        }
     }
 }

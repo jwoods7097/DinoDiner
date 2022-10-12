@@ -4,14 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DinoDiner.Data.Enums;
+using System.ComponentModel;
 
 namespace DinoDiner.Data.Entrees
 {
     /// <summary>
     /// A class representing Pterodactyl Wings chicken wings
     /// </summary>
-    public class PterodactylWings : Entree
+    public class PterodactylWings : Entree, INotifyPropertyChanged
     {
+        /// <summary>
+        /// PropertyChanged event handler
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// The name of the wings
         /// </summary>
@@ -27,7 +33,25 @@ namespace DinoDiner.Data.Entrees
         /// <summary>
         /// Indicates the sauce on the wings
         /// </summary>
-        public WingSauce Sauce { get; set; } = WingSauce.Buffalo;
+        private WingSauce _sauce = WingSauce.Buffalo;
+
+        /// <summary>
+        /// Public property for _sauce, invokes PropertyChanged for necessary properties
+        /// </summary>
+        public WingSauce Sauce
+        {
+            get => _sauce;
+            set
+            {
+                if(_sauce != value)
+                {
+                    _sauce = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Sauce)));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                }
+            }
+        }
 
         /// <summary>
         /// The price of the wings

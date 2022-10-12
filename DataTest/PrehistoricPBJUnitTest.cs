@@ -146,9 +146,10 @@ namespace DataTest
         [InlineData(true, true, true, "Prehistoric PBJ")]
         [InlineData(true, true, false, "Prehistoric PBJ")]
         [InlineData(true, false, true, "Prehistoric PBJ")]
+        [InlineData(true, false, false, "Prehistoric PBJ")]
         [InlineData(false, true, true, "Prehistoric PBJ")]
         [InlineData(false, false, true, "Prehistoric PBJ")]
-        [InlineData(true, false, false, "Prehistoric PBJ")]
+        [InlineData(false, true, false, "Prehistoric PBJ")]
         [InlineData(false, false, false, "Prehistoric PBJ")]
         public void NameShouldBeCorrect(bool peanutButter, bool jelly, bool toasted, string name)
         {
@@ -167,8 +168,72 @@ namespace DataTest
         [Fact]
         public void PrehistoricPBJShouldInheritFromEntree()
         {
-            PrehistoricPBJ pbj = new PrehistoricPBJ();
+            PrehistoricPBJ pbj = new();
             Assert.IsAssignableFrom<Entree>(pbj);
+        }
+
+        /// <summary>
+        /// PrehistoricPBJ should implement the INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyChanged()
+        {
+            PrehistoricPBJ pbj = new();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(pbj);
+        }
+
+        /// <summary>
+        /// Changing PeanutButter should notify changes of PeanutButter and Calories properties
+        /// </summary>
+        /// <param name="peanutButter">Indicates the PBJ is served with peanut butter</param>
+        /// <param name="propertyName">The property that should be notified</param>
+        [Theory]
+        [InlineData(true, "PeanutButter")]
+        [InlineData(false, "PeanutButter")]
+        [InlineData(true, "Calories")]
+        [InlineData(false, "Calories")]
+        public void ChangingPeanutButterShouldNotifyOfPropertyChanges(bool peanutButter, string propertyName)
+        {
+            PrehistoricPBJ pbj = new();
+            pbj.PeanutButter = !peanutButter; // Ensures the property will always be set
+            Assert.PropertyChanged(pbj, propertyName, () => {
+                pbj.PeanutButter = peanutButter;
+            });
+        }
+
+        /// <summary>
+        /// Changing Jelly should notify changes of Jelly and Calories properties
+        /// </summary>
+        /// <param name="jelly">Indicates the PBJ is served with jelly</param>
+        /// <param name="propertyName">The property that should be notified</param>
+        [Theory]
+        [InlineData(true, "Jelly")]
+        [InlineData(false, "Jelly")]
+        [InlineData(true, "Calories")]
+        [InlineData(false, "Calories")]
+        public void ChangingJellyShouldNotifyOfPropertyChanges(bool jelly, string propertyName)
+        {
+            PrehistoricPBJ pbj = new();
+            pbj.Jelly = !jelly; // Ensures the property will always be set
+            Assert.PropertyChanged(pbj, propertyName, () => {
+                pbj.Jelly = jelly;
+            });
+        }
+
+        /// <summary>
+        /// Changing Toasted should notify changes of Toasted property
+        /// </summary>
+        /// <param name="toasted">Indicates the PBJ is toasted</param>
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void ChangingToastedShouldNotifyOfPropertyChanges(bool toasted)
+        {
+            PrehistoricPBJ pbj = new();
+            pbj.Toasted = !toasted; // Ensures the property will always be set
+            Assert.PropertyChanged(pbj, "Toasted", () => {
+                pbj.Toasted = toasted;
+            });
         }
     }
 }

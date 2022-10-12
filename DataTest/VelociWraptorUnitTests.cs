@@ -123,5 +123,53 @@
             vw.Cheese = true;
             Assert.True(vw.Cheese);
         }
+
+        /// <summary>
+        /// VelociWraptor should implement the INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyChanged()
+        {
+            VelociWraptor vw = new();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(vw);
+        }
+
+        /// <summary>
+        /// Changing Dressing should notify changes of Dressing and Calories properties
+        /// </summary>
+        /// <param name="dressing">Indicates the VelociWraptor is served with caesar dressing</param>
+        /// <param name="propertyName">The property that should be notified</param>
+        [Theory]
+        [InlineData(true, "Dressing")]
+        [InlineData(false, "Dressing")]
+        [InlineData(true, "Calories")]
+        [InlineData(false, "Calories")]
+        public void ChangingDressingShouldNotifyOfPropertyChanges(bool dressing, string propertyName)
+        {
+            VelociWraptor vw = new();
+            vw.Dressing = !dressing; // Ensures the property will always be set
+            Assert.PropertyChanged(vw, propertyName, () => {
+                vw.Dressing = dressing;
+            });
+        }
+
+        /// <summary>
+        /// Changing Cheese should notify changes of Cheese and Calories properties
+        /// </summary>
+        /// <param name="cheese">Indicates the VelociWraptor is served with cheese</param>
+        /// <param name="propertyName">The property that should be notified</param>
+        [Theory]
+        [InlineData(true, "Cheese")]
+        [InlineData(false, "Cheese")]
+        [InlineData(true, "Calories")]
+        [InlineData(false, "Calories")]
+        public void ChangingCheeseShouldNotifyOfPropertyChanges(bool cheese, string propertyName)
+        {
+            VelociWraptor vw = new();
+            vw.Cheese = !cheese; // Ensures the property will always be set
+            Assert.PropertyChanged(vw, propertyName, () => {
+                vw.Cheese = cheese;
+            });
+        }
     }
 }

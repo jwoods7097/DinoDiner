@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace DinoDiner.Data.Entrees
 {
     /// <summary>
     /// A class representing a VelociWraptor caesar chicken wrap
     /// </summary>
-    public class VelociWraptor : Entree
+    public class VelociWraptor : Entree, INotifyPropertyChanged
     {
+        /// <summary>
+        /// PropertyChanged event handler
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// The name of the wrap
         /// </summary>
@@ -38,11 +44,45 @@ namespace DinoDiner.Data.Entrees
         /// <summary>
         /// Indicates the wrap is served with caesar dressing
         /// </summary>
-        public bool Dressing { get; set; } = true;
+        private bool _dressing = true;
 
         /// <summary>
-        /// Indicates the wrap is served with parmesan cheese
+        /// Public property for _dressing, invokes PropertyChanged for necessary properties
         /// </summary>
-        public bool Cheese { get; set; } = true;
+        public bool Dressing
+        {
+            get => _dressing;
+            set
+            {
+                if(_dressing != value)
+                {
+                    _dressing = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Dressing)));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Indicates the wrap is served with cheese
+        /// </summary>
+        private bool _cheese = true;
+
+        /// <summary>
+        /// Public property for _cheese, invokes PropertyChanged for necessary properties
+        /// </summary>
+        public bool Cheese
+        {
+            get => _cheese;
+            set
+            {
+                if (_cheese != value)
+                {
+                    _cheese = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Cheese)));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                }
+            }
+        }
     }
 }

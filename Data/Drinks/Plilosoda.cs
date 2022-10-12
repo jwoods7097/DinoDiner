@@ -91,6 +91,24 @@ namespace DinoDiner.Data.Drinks
         /// <summary>
         /// The flavor of the soda
         /// </summary>
-        public SodaFlavor Flavor { get; set; }
+        private SodaFlavor _flavor;
+
+        /// <summary>
+        /// Public property for _flavor, invokes PropertyChanged for necessary properties
+        /// </summary>
+        public SodaFlavor Flavor
+        {
+            get => _flavor;
+            set
+            {
+                if(_flavor != value)
+                {
+                    _flavor = value;
+                    OnPropertyChanged(nameof(Flavor));
+                    OnPropertyChanged(nameof(Name));
+                    OnPropertyChanged(nameof(Calories));
+                }
+            }
+        }
     }
 }

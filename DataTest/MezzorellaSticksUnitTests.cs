@@ -21,9 +21,9 @@
         /// <param name="size">The serving size</param>
         /// <param name="name">The expected name</param>
         [Theory]
-        [InlineData(ServingSize.Small, "Small Mezzorealla Sticks")]
-        [InlineData(ServingSize.Medium, "Medium Mezzorealla Sticks")]
-        [InlineData(ServingSize.Large, "Large Mezzorealla Sticks")]
+        [InlineData(ServingSize.Small, "Small Mezzorella Sticks")]
+        [InlineData(ServingSize.Medium, "Medium Mezzorella Sticks")]
+        [InlineData(ServingSize.Large, "Large Mezzorella Sticks")]
         public void NameShouldBeCorrect(ServingSize size, string name)
         {
             MezzorellaSticks ms = new();
@@ -76,6 +76,38 @@
             MezzorellaSticks ms = new();
             ms.Size = size;
             Assert.Equal(size, ms.Size);
+        }
+
+        /// <summary>
+        /// MezzorellaSticks should implement the INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyChanged()
+        {
+            MezzorellaSticks ms = new();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(ms);
+        }
+
+        /// <summary>
+        /// Changing Size should notify changes of Size, Name, Price, and Calories properties
+        /// </summary>
+        /// <param name="size">The size of the MezzorellaSticks</param>
+        /// <param name="propertyName">The property that should be notified</param>
+        [Theory]
+        [InlineData(ServingSize.Medium, "Size")]
+        [InlineData(ServingSize.Medium, "Name")]
+        [InlineData(ServingSize.Medium, "Price")]
+        [InlineData(ServingSize.Medium, "Calories")]
+        [InlineData(ServingSize.Large, "Size")]
+        [InlineData(ServingSize.Large, "Name")]
+        [InlineData(ServingSize.Large, "Price")]
+        [InlineData(ServingSize.Large, "Calories")]
+        public void ChangingSizeShouldNotifyOfPropertyChanges(ServingSize size, string propertyName)
+        {
+            MezzorellaSticks mc = new();
+            Assert.PropertyChanged(mc, propertyName, () => {
+                mc.Size = size;
+            });
         }
     }
 }

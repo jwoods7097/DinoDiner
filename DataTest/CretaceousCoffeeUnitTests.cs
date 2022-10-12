@@ -107,5 +107,58 @@
             cc.Cream = false;
             Assert.False(cc.Cream);
         }
+
+        /// <summary>
+        /// CretaceousCoffee should implement the INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyChanged()
+        {
+            CretaceousCoffee cc = new();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(cc);
+        }
+
+        /// <summary>
+        /// Changing Size should notify changes of Size, Name, and Price properties
+        /// </summary>
+        /// <param name="size">Indicates the size of the CretaceousCoffee</param>
+        /// <param name="propertyName">The property that should be notified</param>
+        [Theory]
+        [InlineData(ServingSize.Small, "Size")]
+        [InlineData(ServingSize.Small, "Price")]
+        [InlineData(ServingSize.Small, "Name")]
+        [InlineData(ServingSize.Medium, "Size")]
+        [InlineData(ServingSize.Medium, "Price")]
+        [InlineData(ServingSize.Medium, "Name")]
+        [InlineData(ServingSize.Large, "Size")]
+        [InlineData(ServingSize.Large, "Price")]
+        [InlineData(ServingSize.Large, "Name")]
+        public void ChangingSizeShouldNotifyOfPropertyChanges(ServingSize size, string propertyName)
+        {
+            CretaceousCoffee cc = new();
+            cc.Size = (ServingSize)10; // Ensures the property will always be set
+            Assert.PropertyChanged(cc, propertyName, () => {
+                cc.Size = size;
+            });
+        }
+
+        /// <summary>
+        /// Changing Cream should notify changes of Cream and Calories properties
+        /// </summary>
+        /// <param name="cream">Indicates the CretaceousCoffe is served with cream</param>
+        /// <param name="propertyName">The property that should be notified</param>
+        [Theory]
+        [InlineData(true, "Cream")]
+        [InlineData(false, "Cream")]
+        [InlineData(true, "Calories")]
+        [InlineData(false, "Calories")]
+        public void ChangingCreamShouldNotifyOfPropertyChanges(bool cream, string propertyName)
+        {
+            CretaceousCoffee cc = new();
+            cc.Cream = !cream; // Ensures the property will always be set
+            Assert.PropertyChanged(cc, propertyName, () => {
+                cc.Cream = cream;
+            });
+        }
     }
 }

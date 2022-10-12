@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace DinoDiner.Data.Entrees
 {
     /// <summary>
     /// A class representing a Brontowurst brautwurst
     /// </summary>
-    public class Brontowurst : Entree
+    public class Brontowurst : Entree, INotifyPropertyChanged
     {
+        /// <summary>
+        /// PropertyChanged event handler
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// The name of the brautwurst
         /// </summary>
@@ -29,11 +35,43 @@ namespace DinoDiner.Data.Entrees
         /// <summary>
         /// Indicates the brautwurst has onions
         /// </summary>
-        public bool Onions { get; set; } = true;
+        private bool _onions = true;
+
+        /// <summary>
+        /// Public property for _onions, invokes PropertyChanged for necessary properties
+        /// </summary>
+        public bool Onions
+        {
+            get => _onions;
+            set
+            {
+                if(_onions != value)
+                {
+                    _onions = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Onions)));
+                }
+            }
+        }
 
         /// <summary>
         /// Indicates the brautwurst has peppers
         /// </summary>
-        public bool Peppers { get; set; } = true;
+        private bool _peppers = true;
+
+        /// <summary>
+        /// Public property for _peppers, invokes PropertyChanged for necessary properties
+        /// </summary>
+        public bool Peppers
+        {
+            get => _peppers;
+            set
+            {
+                if(_peppers != value)
+                {
+                    _peppers = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Peppers)));
+                }
+            }
+        }
     }
 }

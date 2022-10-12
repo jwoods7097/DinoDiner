@@ -45,6 +45,23 @@ namespace DinoDiner.Data.Drinks
         /// <summary>
         /// Indicates the coffee is served with cream
         /// </summary>
-        public bool Cream { get; set; } = false;
+        private bool _cream = false;
+
+        /// <summary>
+        /// Public property for _cream, invokes PropertyChanged for necessary properties
+        /// </summary>
+        public bool Cream
+        {
+            get => _cream;
+            set
+            {
+                if(_cream != value)
+                {
+                    _cream = value;
+                    OnPropertyChanged(nameof(Cream));
+                    OnPropertyChanged(nameof(Calories));
+                }
+            }
+        }
     }
 }

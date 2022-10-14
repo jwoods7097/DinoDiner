@@ -18,8 +18,8 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
         </Style>
     </Window.Resources>
-    
-    <Grid>
+
+    <Grid Button.Click="HandleClick">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>
@@ -31,7 +31,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <local:MenuItemSelectionControl x:Name="MenuSelect" Grid.ColumnSpan="3"/>
+        <Border Name="SelectionBorder" Grid.ColumnSpan="3"/>
         <local:OrderSummaryControl x:Name="OrderSummary" Grid.Column="3" Grid.RowSpan="2"/>
 
         <Button Name="CancelButton" Grid.Row="1" Grid.Column="0">

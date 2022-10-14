@@ -7,16 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="320">
     <!--Allows the user to select a size-->
-    <UserControl.Resources>
-        <ScaleTransform x:Key="enlarge" ScaleX="2" ScaleY="2"/>
-        <Style TargetType="RadioButton">
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="20,0,0,0"/>
-            <Setter Property="LayoutTransform" Value="{StaticResource enlarge}"/>
-        </Style>
-    </UserControl.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

@@ -20,9 +20,15 @@ namespace DinoDiner.PointOfSale
     /// </summary>
     public partial class SideCustomizationControl : UserControl
     {
-        public SideCustomizationControl()
+        public SideCustomizationControl(string buttonName)
         {
             InitializeComponent();
+            if(buttonName == "FryceritopsButton")
+            {
+                OptionsTextBlock.Visibility = Visibility.Visible;
+                SaltCheckBox.Visibility = Visibility.Visible;
+                SauceCheckBox.Visibility = Visibility.Visible;
+            }
         }
     }
 }

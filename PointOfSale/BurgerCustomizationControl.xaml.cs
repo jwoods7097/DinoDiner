@@ -20,7 +20,7 @@ namespace DinoDiner.PointOfSale
     /// </summary>
     public partial class BurgerCustomizationControl : UserControl
     {
-        public BurgerCustomizationControl()
+        public BurgerCustomizationControl(string burgerType)
         {
             InitializeComponent();
         }

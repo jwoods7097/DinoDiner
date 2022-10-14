@@ -20,9 +20,31 @@ namespace DinoDiner.PointOfSale
     /// </summary>
     public partial class MainWindow : Window
     {
+        protected MenuItemSelectionControl MenuSelect;
+
         public MainWindow()
         {
             InitializeComponent();
+            MenuSelect = new MenuItemSelectionControl();
+            SelectionBorder.Child = MenuSelect;
+        }
+
+        /// <summary>
+        /// Handles all button clicks in this application
+        /// </summary>
+        /// <param name="sender">The caller of the event</param>
+        /// <param name="e">Routed event arguments</param>
+        private void HandleClick(object sender, RoutedEventArgs e)
+        {
+            if (e.OriginalSource is Button button)
+            {
+                SelectionBorder.Child = (button.Name) switch
+                {
+                    "CancelButton" or "AddButton" or "CompleteButton" => MenuSelect,
+                    _ => new ItemCustomizationControl(button.Name),
+                };
+                e.Handled = true;
+            }
         }
     }
 }

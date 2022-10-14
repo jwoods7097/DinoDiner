@@ -9,16 +9,6 @@
     <!--Options to customize a burger.-->
     <!--If one of the preset burgers is selected,-->
     <!--the default toppings and number of patties will already be set.-->
-    <UserControl.Resources>
-        <ScaleTransform x:Key="enlarge" ScaleX="2" ScaleY="2"/>
-        <Style TargetType="CheckBox">
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="20,0,0,0"/>
-            <Setter Property="LayoutTransform" Value="{StaticResource enlarge}"/>
-        </Style>
-    </UserControl.Resources>
-    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

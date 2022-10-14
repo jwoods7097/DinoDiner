@@ -20,9 +20,47 @@ namespace DinoDiner.PointOfSale
     /// </summary>
     public partial class NumberSelectionControl : UserControl
     {
+        /// <summary>
+        /// The value stored in this NumberSelectionControl
+        /// </summary>
+        public uint Value { get; private set; } = 1;
+
         public NumberSelectionControl()
         {
             InitializeComponent();
+            NumberTextBox.Text = Value.ToString();
+        }
+
+        /// <summary>
+        /// Handles clicks on the Decrement Button
+        /// </summary>
+        /// <param name="sender">The caller of the event</param>
+        /// <param name="e">Routed event arguments</param>
+        private void DecrementButtonClicked(object sender, RoutedEventArgs e)
+        {
+            Value--;
+            if(Value == 0)
+            {
+                DecrementButton.IsEnabled = false;
+            }
+            NumberTextBox.Text = Value.ToString();
+            e.Handled = true;
+        }
+
+        /// <summary>
+        /// Handles clicks on the Increment Button
+        /// </summary>
+        /// <param name="sender">The caller of the event</param>
+        /// <param name="e">Routed event arguments</param>
+        private void IncrementButtonClicked(object sender, RoutedEventArgs e)
+        {
+            Value++;
+            if(Value == 1)
+            {
+                DecrementButton.IsEnabled = true;
+            }
+            NumberTextBox.Text = Value.ToString();
+            e.Handled = true;
         }
     }
 }

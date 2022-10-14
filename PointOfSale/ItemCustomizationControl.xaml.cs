@@ -20,9 +20,22 @@ namespace DinoDiner.PointOfSale
     /// </summary>
     public partial class ItemCustomizationControl : UserControl
     {
-        public ItemCustomizationControl()
+        public ItemCustomizationControl(string buttonName)
         {
             InitializeComponent();
+            ItemControlBorder.Child = buttonName switch
+            {
+                "AllosaurusAllAmericanButton" or "CarnotaurusCheeseburgerButton" or "DeinonychusDoubleButton" or "TRexTripleBurgerButton" or "CustomBurgerButton" => new BurgerCustomizationControl(buttonName),
+                "BrontowurstButton" => new BrontowurstCustomizationControl(),
+                "PrehistoricPBJButton" => new PrehistoricPBJCustomizationControl(),
+                "PterodactylWingsButton" => new PterodactylWingsCustomizationControl(),
+                "VelociWraptorButton" => new VelociWraptorCustomizationControl(),
+                "DinoNuggetsButton" => new DinoNuggetsCustomizationControl(),
+                "FryceritopsButton" or "MeteorMacAndCheeseButton" or "MezzorellaSticksButton" or "TriceritotsButton" => new SideCustomizationControl(buttonName),
+                "PlilosodaButton" => new PlilosodaCustomizationControl(),
+                "CretaceousCoffeeButton" => new CretaceousCoffeeCustomizationControl(),
+                _ => throw new ArgumentException("Invalid button name!")
+            };
         }
     }
 }

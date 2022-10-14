@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DinoDiner.Data.Sides;
 
 namespace DinoDiner.PointOfSale
 {
@@ -20,10 +21,10 @@ namespace DinoDiner.PointOfSale
     /// </summary>
     public partial class SideCustomizationControl : UserControl
     {
-        public SideCustomizationControl(string buttonName)
+        public SideCustomizationControl(bool isFryceritops)
         {
             InitializeComponent();
-            if(buttonName == "FryceritopsButton")
+            if(isFryceritops)
             {
                 OptionsTextBlock.Visibility = Visibility.Visible;
                 SaltCheckBox.Visibility = Visibility.Visible;

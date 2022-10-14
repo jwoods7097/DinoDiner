@@ -4,17 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DinoDiner.PointOfSale"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:enums="clr-namespace:DinoDiner.Data.Enums;assembly=DinoDiner.Data"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="640">
     <!---Options to customize a Side-->
     <UserControl.Resources>
-        <ScaleTransform x:Key="enlarge" ScaleX="2" ScaleY="2"/>
-        <Style TargetType="RadioButton">
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="20,0,0,0"/>
-            <Setter Property="LayoutTransform" Value="{StaticResource enlarge}"/>
-        </Style>
+        <ObjectDataProvider x:Key="flavors" ObjectType="system:Enum" MethodName="GetValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:SodaFlavor"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
     </UserControl.Resources>
 
     <Grid>
@@ -37,22 +37,8 @@
         <TextBlock Grid.Row="0" TextAlignment="Left" FontSize="30" Margin="20,0,0,0">
             Flavor:
         </TextBlock>
-        <RadioButton Name="ColaRadioButton" Grid.Row="1" GroupName="Flavor">
-            Cola
-        </RadioButton>
-        <RadioButton Name="CherryColaRadioButton" Grid.Row="2" GroupName="Flavor">
-            Cherry Cola
-        </RadioButton>
-        <RadioButton Name="DoctorDinoRadioButton" Grid.Row="3" GroupName="Flavor">
-            Doctor Dino
-        </RadioButton>
-        <RadioButton Name="LemonLimeRadioButton" Grid.Row="4" GroupName="Flavor">
-            Lemon-Lime
-        </RadioButton>
-        <RadioButton Name="DinoDewRadioButton" Grid.Row="5" GroupName="Flavor">
-            Dino Dew
-        </RadioButton>
+        <ListBox ItemsSource="{Binding Source={StaticResource flavors}}" SelectedItem="{Binding Path=Flavor}" Grid.RowSpan="6" Grid.Row="1" BorderThickness="0"/>
 
-        <local:SizeSelectionControl x:Name="SizeSelect" Grid.Column="1" Grid.RowSpan="4"/>
+        <local:SizeSelectionControl x:Name="SizeSelect" Grid.Column="1" Grid.RowSpan="5"/>
     </Grid>
 </UserControl>

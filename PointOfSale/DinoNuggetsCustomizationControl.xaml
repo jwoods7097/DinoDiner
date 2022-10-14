@@ -21,6 +21,6 @@
         <TextBlock TextAlignment="Right" VerticalAlignment="Center" FontSize="30" Margin="0,0,20,0">
             Count:
         </TextBlock>
-        <local:NumberSelectionControl x:Name="CountSelect" Grid.Column="1" HorizontalAlignment="Left"/>
+        <local:NumberSelectionControl x:Name="CountSelect" Grid.Column="1" HorizontalAlignment="Left" Value="{Binding Path=Count}"/>
     </Grid>
 </UserControl>

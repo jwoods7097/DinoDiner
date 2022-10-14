@@ -24,13 +24,13 @@
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="30" Margin="20,0,0,0">
             Options:
         </TextBlock>
-        <CheckBox Name="PeanutButterCheckBox" Grid.Row="1" Grid.Column="0">
+        <CheckBox Name="PeanutButterCheckBox" Grid.Row="1" Grid.Column="0" IsChecked="{Binding Path=PeanutButter}">
             Peanut Butter
         </CheckBox>
-        <CheckBox Name="JellyCheckBox" Grid.Row="2" Grid.Column="0">
+        <CheckBox Name="JellyCheckBox" Grid.Row="2" Grid.Column="0" IsChecked="{Binding Path=Jelly}">
             Jelly
         </CheckBox>
-        <CheckBox Name="ToastedCheckBox" Grid.Row="3" Grid.Column="0">
+        <CheckBox Name="ToastedCheckBox" Grid.Row="3" Grid.Column="0" IsChecked="{Binding Path=Toasted}">
             Toasted
         </CheckBox>
     </Grid>

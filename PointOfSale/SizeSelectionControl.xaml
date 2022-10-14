@@ -4,28 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DinoDiner.PointOfSale"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:enums="clr-namespace:DinoDiner.Data.Enums;assembly=DinoDiner.Data"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="320">
+             d:DesignHeight="250" d:DesignWidth="320">
     <!--Allows the user to select a size-->
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="sizes" ObjectType="system:Enum" MethodName="GetValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:ServingSize"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="30" Margin="20,0,0,0">
+        <TextBlock Grid.Row="0" TextAlignment="Left" FontSize="30" Margin="20,0,0,0">
             Size:
         </TextBlock>
-        <RadioButton Name="SmallRadioButton" Grid.Row="1" GroupName="Size">
-            Small
-        </RadioButton>
-        <RadioButton Name="MediumRadioButton" Grid.Row="2" GroupName="Size">
-            Medium
-        </RadioButton>
-        <RadioButton Name="LargeRadioButton" Grid.Row="3" GroupName="Size">
-            Large
-        </RadioButton>
+        <ListBox ItemsSource="{Binding Source={StaticResource sizes}}" SelectedItem="{Binding Path=Size}" Grid.RowSpan="4" Grid.Row="1" BorderThickness="0"/>
     </Grid>
 </UserControl>

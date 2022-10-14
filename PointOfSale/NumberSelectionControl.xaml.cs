@@ -21,14 +21,22 @@ namespace DinoDiner.PointOfSale
     public partial class NumberSelectionControl : UserControl
     {
         /// <summary>
+        /// Allows Value to be set with a Data binding
+        /// </summary>
+        public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(nameof(Value), typeof(uint), typeof(NumberSelectionControl), new FrameworkPropertyMetadata(1u, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
+        /// <summary>
         /// The value stored in this NumberSelectionControl
         /// </summary>
-        public uint Value { get; private set; } = 1;
+        public uint Value
+        {
+            get => (uint)GetValue(ValueProperty);
+            set => SetValue(ValueProperty, value);
+        }
 
         public NumberSelectionControl()
         {
             InitializeComponent();
-            NumberTextBox.Text = Value.ToString();
         }
 
         /// <summary>
@@ -43,7 +51,6 @@ namespace DinoDiner.PointOfSale
             {
                 DecrementButton.IsEnabled = false;
             }
-            NumberTextBox.Text = Value.ToString();
             e.Handled = true;
         }
 
@@ -59,7 +66,6 @@ namespace DinoDiner.PointOfSale
             {
                 DecrementButton.IsEnabled = true;
             }
-            NumberTextBox.Text = Value.ToString();
             e.Handled = true;
         }
     }

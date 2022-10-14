@@ -4,17 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DinoDiner.PointOfSale"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:enums="clr-namespace:DinoDiner.Data.Enums;assembly=DinoDiner.Data"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="640">
     <!--Options to customize Pterodactyl Wings-->
     <UserControl.Resources>
-        <ScaleTransform x:Key="enlarge" ScaleX="2" ScaleY="2"/>
-        <Style TargetType="RadioButton">
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="20,0,0,0"/>
-            <Setter Property="LayoutTransform" Value="{StaticResource enlarge}"/>
-        </Style>
+        <ObjectDataProvider x:Key="sauces" ObjectType="system:Enum" MethodName="GetValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:WingSauce"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
     </UserControl.Resources>
     
     <Grid>
@@ -28,20 +28,13 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="30" Margin="20,0,0,0">
             Sauce:
         </TextBlock>
-        <RadioButton Name="BuffaloRadioButton" Grid.Row="1" GroupName="Sauce">
-            Buffalo
-        </RadioButton>
-        <RadioButton Name="TeriyakiRadioButton" Grid.Row="2" GroupName="Sauce">
-            Teriyaki
-        </RadioButton>
-        <RadioButton Name="HoneyGlazeRadioButton" Grid.Row="3" GroupName="Sauce">
-            Honey Glaze
-        </RadioButton>
+        <ListBox Name="SauceListBox" ItemsSource="{Binding Source={StaticResource sauces}}" SelectedItem="{Binding Path=Sauce}" Grid.RowSpan="4" Grid.Row="1" BorderThickness="0"/>
     </Grid>
 </UserControl>

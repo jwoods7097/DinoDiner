@@ -11,7 +11,7 @@
     <!--controls will be inserted in the blank space.-->
     <UserControl.Resources>
         <Style x:Key="headerTextStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="48"/>
+            <Setter Property="FontSize" Value="36"/>
             <Setter Property="TextAlignment" Value="Center"/>
         </Style>
         <Style x:Key="textStyle" TargetType="TextBlock">
@@ -32,10 +32,19 @@
         <Style TargetType="RadioButton">
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="20,0,0,0"/>
+            <Setter Property="Margin" Value="20,10,0,10"/>
             <Setter Property="LayoutTransform">
                 <Setter.Value>
-                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                    <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <RadioButton Content="{TemplateBinding ContentPresenter.Content}" IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"/>
+                    </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
@@ -52,15 +61,18 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Name="ItemNameTextBlock" Grid.ColumnSpan="2" Style="{StaticResource headerTextStyle}">
-            Customize [Item Name]
-        </TextBlock>
-        <Border Name="ItemControlBorder" Grid.Row="1" Grid.ColumnSpan="2"/>
-        <TextBlock Name="CaloriesTextBlock" Grid.Row="2" Grid.Column="0" Style="{StaticResource textStyle}">
-            Calories: 0
-        </TextBlock>
-        <TextBlock Name="PriceTextBlock" Grid.Row="2" Grid.Column="1" Style="{StaticResource textStyle}">
-            Price: $0.00
-        </TextBlock>
+        <WrapPanel Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource headerTextStyle}" Text="Customize "/>
+            <TextBlock Name="ItemNameTextBlock" Style="{StaticResource headerTextStyle}" Text="{Binding Path=Name}"/>
+        </WrapPanel>
+        <Border Name="ItemControlContainer" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <WrapPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource textStyle}" Text="Calories: "/>
+            <TextBlock Name="CaloriesTextBlock" Style="{StaticResource textStyle}" Text="{Binding Path=Calories}"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource textStyle}" Text="Price: $"/>
+            <TextBlock Name="PriceTextBlock" Style="{StaticResource textStyle}" Text="{Binding Path=Price}"/>
+        </WrapPanel>
     </Grid>
 </UserControl>

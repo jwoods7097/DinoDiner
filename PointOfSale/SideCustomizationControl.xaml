@@ -18,20 +18,21 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
         <!--These options will only be visible if Fryceritops was selected-->
         <TextBlock Name="OptionsTextBlock" Grid.Row="0" TextAlignment="Left" FontSize="30" Margin="20,0,0,0" Visibility="Hidden">
             Options:
         </TextBlock>
-        <CheckBox Name="SaltCheckBox" Grid.Row="1" Grid.Column="0" Visibility="Hidden">
+        <CheckBox Name="SaltCheckBox" Grid.Row="1" Grid.Column="0" Visibility="Hidden" IsChecked="{Binding Path=Salt}">
             Salt
         </CheckBox>
-        <CheckBox Name="SauceCheckBox" Grid.Row="2" Grid.Column="0" Visibility="Hidden">
+        <CheckBox Name="SauceCheckBox" Grid.Row="2" Grid.Column="0" Visibility="Hidden" IsChecked="{Binding Path=Sauce}">
             Sauce
         </CheckBox>
         
-        <local:SizeSelectionControl x:Name="SizeSelect" Grid.Column="1" Grid.RowSpan="4"/>
+        <local:SizeSelectionControl x:Name="SizeSelect" Grid.Column="1" Grid.RowSpan="5"/>
     </Grid>
 </UserControl>

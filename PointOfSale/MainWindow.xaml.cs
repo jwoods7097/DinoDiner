@@ -20,7 +20,10 @@ namespace DinoDiner.PointOfSale
     /// </summary>
     public partial class MainWindow : Window
     {
-        protected MenuItemSelectionControl MenuSelect;
+        /// <summary>
+        /// Stores the MenuItemSelectionControl for future use
+        /// </summary>
+        public MenuItemSelectionControl MenuSelect;
 
         public MainWindow()
         {

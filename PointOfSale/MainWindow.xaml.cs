@@ -23,13 +23,13 @@ namespace DinoDiner.PointOfSale
         /// <summary>
         /// Stores the MenuItemSelectionControl for future use
         /// </summary>
-        public MenuItemSelectionControl MenuSelect;
+        public MenuItemSelectionControl MenuSelect { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
             MenuSelect = new MenuItemSelectionControl();
-            SelectionBorder.Child = MenuSelect;
+            SelectionContainer.Child = MenuSelect;
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace DinoDiner.PointOfSale
         {
             if (e.OriginalSource is Button button)
             {
-                SelectionBorder.Child = (button.Name) switch
+                SelectionContainer.Child = (button.Name) switch
                 {
                     "CancelButton" or "AddButton" or "CompleteButton" => MenuSelect,
                     _ => new ItemCustomizationControl(button.Name),

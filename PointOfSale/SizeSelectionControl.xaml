@@ -29,6 +29,6 @@
         <TextBlock Grid.Row="0" TextAlignment="Left" FontSize="30" Margin="20,0,0,0">
             Size:
         </TextBlock>
-        <ListBox ItemsSource="{Binding Source={StaticResource sizes}}" SelectedItem="{Binding Path=Size}" Grid.RowSpan="4" Grid.Row="1" BorderThickness="0"/>
+        <ListBox Name="SizeListBox" ItemsSource="{Binding Source={StaticResource sizes}}" SelectedItem="{Binding Path=Size}" Grid.RowSpan="4" Grid.Row="1" BorderThickness="0"/>
     </Grid>
 </UserControl>

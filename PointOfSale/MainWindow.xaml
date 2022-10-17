@@ -31,7 +31,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Border Name="SelectionBorder" Grid.ColumnSpan="3"/>
+        <Border Name="SelectionContainer" Grid.ColumnSpan="3"/>
         <local:OrderSummaryControl x:Name="OrderSummary" Grid.Column="3" Grid.RowSpan="2"/>
 
         <Button Name="CancelButton" Grid.Row="1" Grid.Column="0">

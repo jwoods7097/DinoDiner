@@ -35,36 +35,50 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        
-        <TextBlock Name="OrderTextBlock" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource headingTextStyle}">
-            Order #00
-        </TextBlock>
-        
-        <TextBlock Name="DateTextBlock" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource headingTextStyle}">
-            10/7/2022
-        </TextBlock>
-        
-        <ListView Name="OrderListView" Grid.Row="2" Grid.ColumnSpan="2"/>
+
+        <TextBlock Name="OrderTextBlock" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource headingTextStyle}" Text="{Binding Path=Number, StringFormat=Order #{0:d}}"/>
+
+        <TextBlock Name="DateTextBlock" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource headingTextStyle}" Text="{Binding Path=PlacedAt, StringFormat={}{0:M/dd/yy h:mmtt}}"/>
+
+        <ListView Name="OrderListView" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=Name}" Style="{StaticResource summaryTextStyle}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Price, StringFormat={}{0:c}}" Style="{StaticResource priceTextStyle}"/>
+                        <ItemsControl Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Path=SpecialInstructions}" BorderThickness="0" Margin="20,0,0,0"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
         <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource summaryTextStyle}">
             Subtotal
         </TextBlock>
-        <TextBlock Name="SubtotalTextBlock" Grid.Row="3" Grid.Column="1" Style="{StaticResource priceTextStyle}">
-            $0.00
-        </TextBlock>
-        
+        <TextBlock Name="SubtotalTextBlock" Grid.Row="3" Grid.Column="1" Style="{StaticResource priceTextStyle}" Text="{Binding Path=Subtotal, StringFormat={}{0:c}}"/>
+
         <TextBlock Grid.Row="4" Grid.Column="0" Style="{StaticResource summaryTextStyle}">
             Tax
         </TextBlock>
-        <TextBlock Name="TaxTextBlock" Grid.Row="4" Grid.Column="1" Style="{StaticResource priceTextStyle}">
-            $0.00
-        </TextBlock>
-        
+        <TextBlock Name="TaxTextBlock" Grid.Row="4" Grid.Column="1" Style="{StaticResource priceTextStyle}" Text="{Binding Path=Tax, StringFormat={}{0:c}}"/>
+
         <TextBlock Grid.Row="5" Grid.Column="0" Style="{StaticResource summaryTextStyle}">
             Total
         </TextBlock>
-        <TextBlock Name="TotalTextBlock" Grid.Row="5" Grid.Column="1" Style="{StaticResource priceTextStyle}">
-            $0.00
-        </TextBlock>
+        <TextBlock Name="TotalTextBlock" Grid.Row="5" Grid.Column="1" Style="{StaticResource priceTextStyle}" Text="{Binding Path=Total, StringFormat={}{0:c}}"/>
     </Grid>
 </UserControl>

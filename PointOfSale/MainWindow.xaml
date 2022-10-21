@@ -9,7 +9,6 @@
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="8, 30, 8, 8"/>
-            <Setter Property="FontSize" Value="20"/>
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
@@ -21,30 +20,36 @@
 
     <Grid Button.Click="HandleClick">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Border Name="SelectionContainer" Grid.ColumnSpan="3"/>
-        <local:OrderSummaryControl x:Name="OrderSummary" Grid.Column="3" Grid.RowSpan="2"/>
+        <Border Name="SelectionContainer" Grid.ColumnSpan="4"/>
+        <local:OrderSummaryControl x:Name="OrderSummary" Grid.Column="4" Grid.RowSpan="2"/>
 
-        <Button Name="CancelButton" Grid.Row="1" Grid.Column="0">
+        <Button Name="NewButton" Grid.Row="1" Grid.Column="0">
             <TextBlock>
-                Cancel Order
+                New Order
             </TextBlock>
         </Button>
-        <Button Name="AddButton" Grid.Row="1" Grid.Column="1">
+        <Button Name="DeleteButton" Grid.Row="1" Grid.Column="1" IsEnabled="False">
             <TextBlock>
-                Add More Items
+                Delete Item
             </TextBlock>
         </Button>
-        <Button Name="CompleteButton" Grid.Row="1" Grid.Column="2">
+        <Button Name="AddButton" Grid.Row="1" Grid.Column="2" IsEnabled="False">
+            <TextBlock>
+                Add Item
+            </TextBlock>
+        </Button>
+        <Button Name="CompleteButton" Grid.Row="1" Grid.Column="3">
             <TextBlock>
                 Complete Order
             </TextBlock>

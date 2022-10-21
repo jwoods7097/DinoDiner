@@ -96,5 +96,51 @@ namespace DinoDiner.PointOfSale
                     throw new ArgumentException("Invalid button name!");
             }
         }
+
+        public ItemCustomizationControl(Data.MenuItem item)
+        {
+            InitializeComponent();
+            if(item is Burger)
+            {
+                ItemControlContainer.Child = new BurgerCustomizationControl();
+            }
+            else if(item is Brontowurst)
+            {
+                ItemControlContainer.Child = new BrontowurstCustomizationControl();
+            }
+            else if (item is DinoNuggets)
+            {
+                ItemControlContainer.Child = new DinoNuggetsCustomizationControl();
+            }
+            else if (item is PrehistoricPBJ)
+            {
+                ItemControlContainer.Child = new PrehistoricPBJCustomizationControl();
+            }
+            else if (item is PterodactylWings)
+            {
+                ItemControlContainer.Child = new PterodactylWingsCustomizationControl();
+            }
+            else if (item is VelociWraptor)
+            {
+                ItemControlContainer.Child = new VelociWraptorCustomizationControl();
+            }
+            else if (item is Side)
+            {
+                ItemControlContainer.Child = new SideCustomizationControl(item is Fryceritops);
+            }
+            else if (item is Plilosoda)
+            {
+                ItemControlContainer.Child = new PlilosodaCustomizationControl();
+            }
+            else if (item is CretaceousCoffee)
+            {
+                ItemControlContainer.Child = new CretaceousCoffeeCustomizationControl();
+            }
+            else
+            {
+                throw new ArgumentException("Invalid Menu Item!");
+            }
+            this.DataContext = item;
+        }
     }
 }

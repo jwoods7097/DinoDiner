@@ -61,18 +61,9 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <WrapPanel Grid.ColumnSpan="2" HorizontalAlignment="Center">
-            <TextBlock Style="{StaticResource headerTextStyle}" Text="Customize "/>
-            <TextBlock Name="ItemNameTextBlock" Style="{StaticResource headerTextStyle}" Text="{Binding Path=Name}"/>
-        </WrapPanel>
+        <TextBlock Grid.ColumnSpan="2" Name="ItemNameTextBlock" Style="{StaticResource headerTextStyle}" Text="{Binding Path=Name, StringFormat=Customize {0:s}}"/>
         <Border Name="ItemControlContainer" Grid.Row="1" Grid.ColumnSpan="2"/>
-        <WrapPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center">
-            <TextBlock Style="{StaticResource textStyle}" Text="Calories: "/>
-            <TextBlock Name="CaloriesTextBlock" Style="{StaticResource textStyle}" Text="{Binding Path=Calories}"/>
-        </WrapPanel>
-        <WrapPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center">
-            <TextBlock Style="{StaticResource textStyle}" Text="Price: $"/>
-            <TextBlock Name="PriceTextBlock" Style="{StaticResource textStyle}" Text="{Binding Path=Price}"/>
-        </WrapPanel>
+        <TextBlock Grid.Row="2" Grid.Column="0" Name="CaloriesTextBlock" Style="{StaticResource textStyle}" Text="{Binding Path=Calories, StringFormat=Calories: {0:d}}"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Name="PriceTextBlock" Style="{StaticResource textStyle}" Text="{Binding Path=Price, StringFormat=Price: {0:c}}"/>
     </Grid>
 </UserControl>

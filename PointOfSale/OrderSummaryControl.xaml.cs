@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DinoDiner.Data;
 
 namespace DinoDiner.PointOfSale
 {
@@ -23,6 +24,7 @@ namespace DinoDiner.PointOfSale
         public OrderSummaryControl()
         {
             InitializeComponent();
+            this.DataContext = new Order();
         }
     }
 }

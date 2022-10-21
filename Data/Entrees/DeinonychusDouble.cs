@@ -19,11 +19,13 @@ namespace DinoDiner.Data.Entrees
         public DeinonychusDouble()
         {
             Patties = 2;
+            DefaultPatties = 2;
             BBQ = true;
             Pickle = true;
             Onion = true;
             Mushrooms = true;
             SwissCheese = true;
+            SpecialInstructions.Clear();
         }
     }
 }

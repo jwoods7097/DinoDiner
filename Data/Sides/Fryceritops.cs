@@ -34,6 +34,7 @@ namespace DinoDiner.Data.Sides
                 if(_salt != value)
                 {
                     _salt = value;
+                    AddToSpecialInstructions("Salt", _salt);
                     OnPropertyChanged(nameof(Salt));
                 }
             }
@@ -55,6 +56,7 @@ namespace DinoDiner.Data.Sides
                 if (_sauce != value)
                 {
                     _sauce = value;
+                    AddToSpecialInstructions("Sauce", _sauce);
                     OnPropertyChanged(nameof(Sauce));
                     OnPropertyChanged(nameof(Calories));
                 }

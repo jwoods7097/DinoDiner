@@ -165,5 +165,15 @@
                 ps.Flavor = flavor;
             });
         }
+
+        /// <summary>
+        /// Plilosoda can be cast as MenuItem
+        /// </summary>
+        [Fact]
+        public void ShouldInheritFromMenuItem()
+        {
+            Plilosoda ps = new();
+            Assert.IsAssignableFrom<MenuItem>(ps);
+        }
     }
 }

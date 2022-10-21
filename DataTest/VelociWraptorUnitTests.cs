@@ -171,5 +171,43 @@
                 vw.Cheese = cheese;
             });
         }
+
+        /// <summary>
+        /// VelociWraptor can be cast as MenuItem
+        /// </summary>
+        [Fact]
+        public void ShouldInheritFromMenuItem()
+        {
+            VelociWraptor vw = new();
+            Assert.IsAssignableFrom<MenuItem>(vw);
+        }
+
+        /// <summary>
+        /// Updating Dressing should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForDressing()
+        {
+            VelociWraptor vw = new();
+            string instruction = "Hold Dressing"; // Ensures string will be the same in both asserts
+            vw.Dressing = false;
+            Assert.Contains<string>(instruction, vw.SpecialInstructions);
+            vw.Dressing = true;
+            Assert.DoesNotContain<string>(instruction, vw.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Cheese should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForCheese()
+        {
+            VelociWraptor vw = new();
+            string instruction = "Hold Cheese"; // Ensures string will be the same in both asserts
+            vw.Cheese = false;
+            Assert.Contains<string>(instruction, vw.SpecialInstructions);
+            vw.Cheese = true;
+            Assert.DoesNotContain<string>(instruction, vw.SpecialInstructions);
+        }
     }
 }

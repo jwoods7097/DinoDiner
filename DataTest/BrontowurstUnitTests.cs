@@ -165,5 +165,43 @@
                 bw.Peppers = peppers;
             });
         }
+
+        /// <summary>
+        /// Brontowurst can be cast as MenuItem
+        /// </summary>
+        [Fact]
+        public void ShouldInheritFromMenuItem()
+        {
+            Brontowurst bw = new();
+            Assert.IsAssignableFrom<MenuItem>(bw);
+        }
+
+        /// <summary>
+        /// Updating Onions should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForOnions()
+        {
+            Brontowurst bw = new();
+            string instruction = "Hold Onions"; // Ensures string will be the same in both asserts
+            bw.Onions = false;
+            Assert.Contains<string>(instruction, bw.SpecialInstructions);
+            bw.Onions = true;
+            Assert.DoesNotContain<string>(instruction, bw.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Peppers should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForPeppers()
+        {
+            Brontowurst bw = new();
+            string instruction = "Hold Peppers"; // Ensures string will be the same in both asserts
+            bw.Peppers = false;
+            Assert.Contains<string>(instruction, bw.SpecialInstructions);
+            bw.Peppers = true;
+            Assert.DoesNotContain<string>(instruction, bw.SpecialInstructions);
+        }
     }
 }

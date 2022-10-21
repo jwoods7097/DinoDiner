@@ -18,11 +18,11 @@ namespace DinoDiner.Data.Entrees
 
         public CarnotaurusCheeseburger()
         {
-            Patties = 1;
             Tomato = true;
             Ketchup = true;
             Pickle = true;
             AmericanCheese = true;
+            SpecialInstructions.Clear();
         }
     }
 }

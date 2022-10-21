@@ -9,21 +9,8 @@ namespace DinoDiner.Data.Entrees
     /// <summary>
     /// A base class for all entrees sold at DinoDiner
     /// </summary>
-    public abstract class Entree
+    public abstract class Entree : MenuItem
     {
-        /// <summary>
-        /// The name of the Entree
-        /// </summary>
-        public abstract string Name { get; }
-
-        /// <summary>
-        /// The price of the Entree
-        /// </summary>
-        public abstract decimal Price { get; }
-
-        /// <summary>
-        /// The calories of the Entree
-        /// </summary>
-        public abstract uint Calories { get; }
+        // This class now contains nothing since the name, price, and calories properties are defined in MenuItem
     }
 }

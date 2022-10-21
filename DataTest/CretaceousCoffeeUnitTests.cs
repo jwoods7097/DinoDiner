@@ -160,5 +160,29 @@
                 cc.Cream = cream;
             });
         }
+
+        /// <summary>
+        /// CretaceousCoffee can be cast as MenuItem
+        /// </summary>
+        [Fact]
+        public void ShouldInheritFromMenuItem()
+        {
+            CretaceousCoffee cc = new();
+            Assert.IsAssignableFrom<MenuItem>(cc);
+        }
+
+        /// <summary>
+        /// Updating Cream should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForCream()
+        {
+            CretaceousCoffee cc = new();
+            string instruction = "Add Cream"; // Ensures string will be the same in both asserts
+            cc.Cream = true;
+            Assert.Contains<string>(instruction, cc.SpecialInstructions);
+            cc.Cream = false;
+            Assert.DoesNotContain<string>(instruction, cc.SpecialInstructions);
+        }
     }
 }

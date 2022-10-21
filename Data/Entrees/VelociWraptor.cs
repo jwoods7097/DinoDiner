@@ -57,6 +57,7 @@ namespace DinoDiner.Data.Entrees
                 if(_dressing != value)
                 {
                     _dressing = value;
+                    AddToSpecialInstructions("Dressing", _dressing);
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Dressing)));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
                 }
@@ -79,6 +80,7 @@ namespace DinoDiner.Data.Entrees
                 if (_cheese != value)
                 {
                     _cheese = value;
+                    AddToSpecialInstructions("Cheese", _cheese);
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Cheese)));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
                 }

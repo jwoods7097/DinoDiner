@@ -18,10 +18,10 @@ namespace DinoDiner.Data.Entrees
 
         public AllosaurusAllAmericanBurger()
         {
-            Patties = 1;
             Ketchup = true;
             Mustard = true;
             Pickle = true;
+            SpecialInstructions.Clear();
         }
     }
 }

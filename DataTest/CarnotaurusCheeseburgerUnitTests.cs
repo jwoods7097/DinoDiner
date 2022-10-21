@@ -740,5 +740,223 @@
                 b.Mushrooms = mushrooms;
             });
         }
+
+        /// <summary>
+        /// CarnotaurusCheeseburger can be cast as MenuItem
+        /// </summary>
+        [Fact]
+        public void ShouldInheritFromMenuItem()
+        {
+            CarnotaurusCheeseburger b = new();
+            Assert.IsAssignableFrom<MenuItem>(b);
+        }
+
+        /// <summary>
+        /// Updating Patties should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        /// <param name="patties">The number of patties served on the burger</param>
+        /// <param name="instruction">The expected instruction in SpecialInstructions</param>
+        [Theory]
+        [InlineData(0, "0 Patties")]
+        [InlineData(1, "")]
+        [InlineData(2, "2 Patties")]
+        [InlineData(3, "3 Patties")]
+        [InlineData(4, "4 Patties")]
+        [InlineData(5, "5 Patties")]
+        [InlineData(6, "6 Patties")]
+        [InlineData(7, "7 Patties")]
+        public void SpecialInstructionsShouldBeCorrectForPatties(uint patties, string instruction)
+        {
+            CarnotaurusCheeseburger b = new();
+            b.Patties = patties;
+            if (instruction == "")
+            {
+                Assert.DoesNotContain<string>(b.SpecialInstructions, item => item.Contains("Patt"));
+            }
+            else
+            {
+                Assert.Contains<string>(b.SpecialInstructions, item => item.Contains("Patt"));
+            }
+            b.Patties = 1;
+            Assert.DoesNotContain<string>(b.SpecialInstructions, item => item.Contains("Patt"));
+        }
+
+        /// <summary>
+        /// Updating Ketchup should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForKetchup()
+        {
+            CarnotaurusCheeseburger b = new();
+            string instruction = "Hold Ketchup"; // Ensures string will be the same in both asserts
+            b.Ketchup = false;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Ketchup = true;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Mustard should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForMustard()
+        {
+            CarnotaurusCheeseburger b = new();
+            string instruction = "Add Mustard"; // Ensures string will be the same in both asserts
+            b.Mustard = true;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Mustard = false;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Pickle should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForPickle()
+        {
+            CarnotaurusCheeseburger b = new();
+            string instruction = "Hold Pickle"; // Ensures string will be the same in both asserts
+            b.Pickle = false;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Pickle = true;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Mayo should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForMayo()
+        {
+            CarnotaurusCheeseburger b = new();
+            string instruction = "Add Mayo"; // Ensures string will be the same in both asserts
+            b.Mayo = true;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Mayo = false;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating BBQ should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForBBQ()
+        {
+            CarnotaurusCheeseburger b = new();
+            string instruction = "Add BBQ"; // Ensures string will be the same in both asserts
+            b.BBQ = true;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.BBQ = false;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Onion should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForOnion()
+        {
+            CarnotaurusCheeseburger b = new();
+            string instruction = "Add Onion"; // Ensures string will be the same in both asserts
+            b.Onion = true;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Onion = false;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Tomato should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForTomato()
+        {
+            CarnotaurusCheeseburger b = new();
+            string instruction = "Hold Tomato"; // Ensures string will be the same in both asserts
+            b.Tomato = false;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Tomato = true;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Lettuce should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForLettuce()
+        {
+            CarnotaurusCheeseburger b = new();
+            string instruction = "Add Lettuce"; // Ensures string will be the same in both asserts
+            b.Lettuce = true;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Lettuce = false;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating AmericanCheese should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForAmericanCheese()
+        {
+            CarnotaurusCheeseburger b = new();
+            string instruction = "Hold American Cheese"; // Ensures string will be the same in both asserts
+            b.AmericanCheese = false;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.AmericanCheese = true;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating SwissCheese should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForSwissCheese()
+        {
+            CarnotaurusCheeseburger b = new();
+            string instruction = "Add Swiss Cheese"; // Ensures string will be the same in both asserts
+            b.SwissCheese = true;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.SwissCheese = false;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Bacon should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForBacon()
+        {
+            CarnotaurusCheeseburger b = new();
+            string instruction = "Add Bacon"; // Ensures string will be the same in both asserts
+            b.Bacon = true;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Bacon = false;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Mushrooms should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForMushrooms()
+        {
+            CarnotaurusCheeseburger b = new();
+            string instruction = "Add Mushrooms"; // Ensures string will be the same in both asserts
+            b.Mushrooms = true;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Mushrooms = false;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// CarnotaurusCheeseburger can be cast as Burger
+        /// </summary>
+        [Fact]
+        public void ShouldInheritFromBurger()
+        {
+            CarnotaurusCheeseburger b = new();
+            Assert.IsAssignableFrom<Burger>(b);
+        }
     }
 }

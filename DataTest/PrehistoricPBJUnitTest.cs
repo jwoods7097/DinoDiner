@@ -166,7 +166,7 @@ namespace DataTest
         /// PrehistoricPBJ can be cast as Entree
         /// </summary>
         [Fact]
-        public void PrehistoricPBJShouldInheritFromEntree()
+        public void ShouldInheritFromEntree()
         {
             PrehistoricPBJ pbj = new();
             Assert.IsAssignableFrom<Entree>(pbj);
@@ -234,6 +234,58 @@ namespace DataTest
             Assert.PropertyChanged(pbj, "Toasted", () => {
                 pbj.Toasted = toasted;
             });
+        }
+
+        /// <summary>
+        /// PrehistoricPBJ can be cast as MenuItem
+        /// </summary>
+        [Fact]
+        public void ShouldInheritFromMenuItem()
+        {
+            PrehistoricPBJ pbj = new();
+            Assert.IsAssignableFrom<MenuItem>(pbj);
+        }
+
+        /// <summary>
+        /// Updating PeanutButter should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForPeanutButter()
+        {
+            PrehistoricPBJ pbj = new();
+            string instruction = "Hold Peanut Butter"; // Ensures string will be the same in both asserts
+            pbj.PeanutButter = false;
+            Assert.Contains<string>(instruction, pbj.SpecialInstructions);
+            pbj.PeanutButter = true;
+            Assert.DoesNotContain<string>(instruction, pbj.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Jelly should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForJelly()
+        {
+            PrehistoricPBJ pbj = new();
+            string instruction = "Hold Jelly"; // Ensures string will be the same in both asserts
+            pbj.Jelly = false;
+            Assert.Contains<string>(instruction, pbj.SpecialInstructions);
+            pbj.Jelly = true;
+            Assert.DoesNotContain<string>(instruction, pbj.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Toasted should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForToasted()
+        {
+            PrehistoricPBJ pbj = new();
+            string instruction = "Not Toasted"; // Ensures string will be the same in both asserts
+            pbj.Toasted = false;
+            Assert.Contains<string>(instruction, pbj.SpecialInstructions);
+            pbj.Toasted = true;
+            Assert.DoesNotContain<string>(instruction, pbj.SpecialInstructions);
         }
     }
 }

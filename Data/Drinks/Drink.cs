@@ -11,17 +11,12 @@ namespace DinoDiner.Data.Drinks
     /// <summary>
     /// A base class for all drinks sold at Dino Diner
     /// </summary>
-    public abstract class Drink : INotifyPropertyChanged
+    public abstract class Drink : MenuItem, INotifyPropertyChanged
     {
         /// <summary>
         /// PropertyChanged event handler
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// The name of the Drink
-        /// </summary>
-        public abstract string Name { get; }
 
         /// <summary>
         /// The serving size of the Drink
@@ -49,16 +44,6 @@ namespace DinoDiner.Data.Drinks
                 }
             }
         }
-
-        /// <summary>
-        /// The price of the Drink
-        /// </summary>
-        public abstract decimal Price { get; }
-
-        /// <summary>
-        /// The calories of the Drink
-        /// </summary>
-        public abstract uint Calories { get; }
 
         /// <summary>
         /// Allows derived Drink classes to use the PropertyChanged event

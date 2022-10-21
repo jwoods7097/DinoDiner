@@ -11,17 +11,12 @@ namespace DinoDiner.Data.Sides
     /// <summary>
     /// A base class for all sides sold at DinoDiner
     /// </summary>
-    public abstract class Side : INotifyPropertyChanged
+    public abstract class Side : MenuItem, INotifyPropertyChanged
     {
         /// <summary>
         /// PropertyChanged event handler
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// The name of the Side
-        /// </summary>
-        public abstract string Name { get; }
 
         /// <summary>
         /// The serving size of the Side
@@ -46,16 +41,6 @@ namespace DinoDiner.Data.Sides
                 }
             }
         }
-
-        /// <summary>
-        /// The price of the Side
-        /// </summary>
-        public abstract decimal Price { get; }
-
-        /// <summary>
-        /// The calories of the Side
-        /// </summary>
-        public abstract uint Calories { get; }
 
         /// <summary>
         /// Allows derived Side classes to use the PropertyChanged event

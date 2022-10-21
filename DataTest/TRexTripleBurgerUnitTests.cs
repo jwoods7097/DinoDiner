@@ -740,5 +740,223 @@
                 b.Mushrooms = mushrooms;
             });
         }
+
+        /// <summary>
+        /// TRexTriple can be cast as MenuItem
+        /// </summary>
+        [Fact]
+        public void ShouldInheritFromMenuItem()
+        {
+            TRexTriple b = new();
+            Assert.IsAssignableFrom<MenuItem>(b);
+        }
+
+        /// <summary>
+        /// Updating Patties should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        /// <param name="patties">The number of patties served on the burger</param>
+        /// <param name="instruction">The expected instruction in SpecialInstructions</param>
+        [Theory]
+        [InlineData(0, "0 Patties")]
+        [InlineData(1, "1 Patty")]
+        [InlineData(2, "2 Patties")]
+        [InlineData(3, "")]
+        [InlineData(4, "4 Patties")]
+        [InlineData(5, "5 Patties")]
+        [InlineData(6, "6 Patties")]
+        [InlineData(7, "7 Patties")]
+        public void SpecialInstructionsShouldBeCorrectForPatties(uint patties, string instruction)
+        {
+            TRexTriple b = new();
+            b.Patties = patties;
+            if (instruction == "")
+            {
+                Assert.DoesNotContain<string>(b.SpecialInstructions, item => item.Contains("Patt"));
+            }
+            else
+            {
+                Assert.Contains<string>(b.SpecialInstructions, item => item.Contains("Patt"));
+            }
+            b.Patties = 3;
+            Assert.DoesNotContain<string>(b.SpecialInstructions, item => item.Contains("Patt"));
+        }
+
+        /// <summary>
+        /// Updating Ketchup should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForKetchup()
+        {
+            TRexTriple b = new();
+            string instruction = "Hold Ketchup"; // Ensures string will be the same in both asserts
+            b.Ketchup = false;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Ketchup = true;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Mustard should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForMustard()
+        {
+            TRexTriple b = new();
+            string instruction = "Add Mustard"; // Ensures string will be the same in both asserts
+            b.Mustard = true;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Mustard = false;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Pickle should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForPickle()
+        {
+            TRexTriple b = new();
+            string instruction = "Hold Pickle"; // Ensures string will be the same in both asserts
+            b.Pickle = false;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Pickle = true;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Mayo should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForMayo()
+        {
+            TRexTriple b = new();
+            string instruction = "Hold Mayo"; // Ensures string will be the same in both asserts
+            b.Mayo = false;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Mayo = true;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating BBQ should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForBBQ()
+        {
+            TRexTriple b = new();
+            string instruction = "Add BBQ"; // Ensures string will be the same in both asserts
+            b.BBQ = true;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.BBQ = false;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Onion should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForOnion()
+        {
+            TRexTriple b = new();
+            string instruction = "Hold Onion"; // Ensures string will be the same in both asserts
+            b.Onion = false;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Onion = true;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Tomato should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForTomato()
+        {
+            TRexTriple b = new();
+            string instruction = "Hold Tomato"; // Ensures string will be the same in both asserts
+            b.Tomato = false;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Tomato = true;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Lettuce should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForLettuce()
+        {
+            TRexTriple b = new();
+            string instruction = "Hold Lettuce"; // Ensures string will be the same in both asserts
+            b.Lettuce = false;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Lettuce = true;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating AmericanCheese should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForAmericanCheese()
+        {
+            TRexTriple b = new();
+            string instruction = "Add American Cheese"; // Ensures string will be the same in both asserts
+            b.AmericanCheese = true;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.AmericanCheese = false;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating SwissCheese should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForSwissCheese()
+        {
+            TRexTriple b = new();
+            string instruction = "Add Swiss Cheese"; // Ensures string will be the same in both asserts
+            b.SwissCheese = true;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.SwissCheese = false;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Bacon should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForBacon()
+        {
+            TRexTriple b = new();
+            string instruction = "Add Bacon"; // Ensures string will be the same in both asserts
+            b.Bacon = true;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Bacon = false;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Mushrooms should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForMushrooms()
+        {
+            TRexTriple b = new();
+            string instruction = "Add Mushrooms"; // Ensures string will be the same in both asserts
+            b.Mushrooms = true;
+            Assert.Contains<string>(instruction, b.SpecialInstructions);
+            b.Mushrooms = false;
+            Assert.DoesNotContain<string>(instruction, b.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// TRexTriple can be cast as Burger
+        /// </summary>
+        [Fact]
+        public void ShouldInheritFromBurger()
+        {
+            TRexTriple b = new();
+            Assert.IsAssignableFrom<Burger>(b);
+        }
     }
 }

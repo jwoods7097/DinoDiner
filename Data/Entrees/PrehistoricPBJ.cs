@@ -28,6 +28,7 @@ namespace DinoDiner.Data.Entrees
                 if(_peanutButter != value)
                 {
                     _peanutButter = value;
+                    AddToSpecialInstructions("Peanut Butter", _peanutButter);
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PeanutButter)));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
                 }
@@ -50,6 +51,7 @@ namespace DinoDiner.Data.Entrees
                 if(_jelly != value)
                 {
                     _jelly = value;
+                    AddToSpecialInstructions("Jelly", _jelly);
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Jelly)));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
                 }
@@ -72,6 +74,31 @@ namespace DinoDiner.Data.Entrees
                 if (_toasted != value)
                 {
                     _toasted = value;
+
+                    // This is hard coded because it is grammatically different than the other properties
+                    if (_toasted)
+                    {
+                        if (SpecialInstructions.Contains("Not Toasted"))
+                        {
+                            SpecialInstructions.Remove("Not Toasted");
+                        }
+                        else
+                        {
+                            SpecialInstructions.Add("Toasted");
+                        }
+                    }
+                    else
+                    {
+                        if (SpecialInstructions.Contains("Toasted"))
+                        {
+                            SpecialInstructions.Remove("Toasted");
+                        }
+                        else
+                        {
+                            SpecialInstructions.Add("Not Toasted");
+                        }
+                    }
+
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Toasted)));
                 }
             }

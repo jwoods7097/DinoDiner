@@ -4,3 +4,4 @@ global using DinoDiner.Data.Sides;
 global using DinoDiner.Data.Drinks;
 global using DinoDiner.Data.Enums;
 global using System.ComponentModel;
+global using DinoDiner.Data;

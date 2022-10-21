@@ -19,12 +19,14 @@ namespace DinoDiner.Data.Entrees
         public TRexTriple()
         {
             Patties = 3;
+            DefaultPatties = 3;
             Ketchup = true;
             Mayo = true;
             Pickle = true;
             Onion = true;
             Lettuce = true;
             Tomato = true;
+            SpecialInstructions.Clear();
         }
     }
 }

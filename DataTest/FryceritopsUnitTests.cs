@@ -197,5 +197,43 @@
                 ft.Sauce = sauce;
             });
         }
+
+        /// <summary>
+        /// Fryceritops can be cast as MenuItem
+        /// </summary>
+        [Fact]
+        public void ShouldInheritFromMenuItem()
+        {
+            Fryceritops ft = new();
+            Assert.IsAssignableFrom<MenuItem>(ft);
+        }
+
+        /// <summary>
+        /// Updating Salt should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForSalt()
+        {
+            Fryceritops ft = new();
+            string instruction = "Hold Salt"; // Ensures string will be the same in both asserts
+            ft.Salt = false;
+            Assert.Contains<string>(instruction, ft.SpecialInstructions);
+            ft.Salt = true;
+            Assert.DoesNotContain<string>(instruction, ft.SpecialInstructions);
+        }
+
+        /// <summary>
+        /// Updating Sauce should apply the appropriate change to SpecialInstructions
+        /// </summary>
+        [Fact]
+        public void SpecialInstructionsShouldBeCorrectForSauce()
+        {
+            Fryceritops ft = new();
+            string instruction = "Add Sauce"; // Ensures string will be the same in both asserts
+            ft.Sauce = true;
+            Assert.Contains<string>(instruction, ft.SpecialInstructions);
+            ft.Sauce = false;
+            Assert.DoesNotContain<string>(instruction, ft.SpecialInstructions);
+        }
     }
 }

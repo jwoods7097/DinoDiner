@@ -10,13 +10,8 @@ namespace DinoDiner.Data.Entrees
     /// <summary>
     /// A class representing Dino Nuggets chicken nuggets
     /// </summary>
-    public class DinoNuggets : Entree, INotifyPropertyChanged
+    public class DinoNuggets : Entree
     {
-        /// <summary>
-        /// PropertyChanged event handler
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
         /// <summary>
         /// The name of the nuggets
         /// </summary>
@@ -38,10 +33,10 @@ namespace DinoDiner.Data.Entrees
                 if(_count != value)
                 {
                     _count = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Count)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(Count));
+                    OnPropertyChanged(nameof(Name));
+                    OnPropertyChanged(nameof(Price));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }

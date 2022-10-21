@@ -10,13 +10,8 @@ namespace DinoDiner.Data.Entrees
     /// <summary>
     /// A class representing a VelociWraptor caesar chicken wrap
     /// </summary>
-    public class VelociWraptor : Entree, INotifyPropertyChanged
+    public class VelociWraptor : Entree
     {
-        /// <summary>
-        /// PropertyChanged event handler
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
         /// <summary>
         /// The name of the wrap
         /// </summary>
@@ -58,8 +53,8 @@ namespace DinoDiner.Data.Entrees
                 {
                     _dressing = value;
                     AddToSpecialInstructions("Dressing", _dressing);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Dressing)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(Dressing));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }
@@ -81,8 +76,8 @@ namespace DinoDiner.Data.Entrees
                 {
                     _cheese = value;
                     AddToSpecialInstructions("Cheese", _cheese);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Cheese)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(Cheese));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }

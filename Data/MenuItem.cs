@@ -4,14 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace DinoDiner.Data
 {
     /// <summary>
     /// Represents a menu item sold at Dino Diner
     /// </summary>
-    public abstract class MenuItem
-    {      
+    public abstract class MenuItem : INotifyPropertyChanged
+    {
+        /// <summary>
+        /// PropertyChanged event handler
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// The name of the Item
         /// </summary>
@@ -63,6 +69,15 @@ namespace DinoDiner.Data
                     SpecialInstructions.Add(hold);
                 }
             }
+        }
+
+        /// <summary>
+        /// Allows derived Side classes to use the PropertyChanged event
+        /// </summary>
+        /// <param name="propertyName">The name of the property to notify</param>
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

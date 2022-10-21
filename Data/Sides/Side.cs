@@ -11,13 +11,8 @@ namespace DinoDiner.Data.Sides
     /// <summary>
     /// A base class for all sides sold at DinoDiner
     /// </summary>
-    public abstract class Side : MenuItem, INotifyPropertyChanged
+    public abstract class Side : MenuItem
     {
-        /// <summary>
-        /// PropertyChanged event handler
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
         /// <summary>
         /// The serving size of the Side
         /// </summary>
@@ -34,21 +29,12 @@ namespace DinoDiner.Data.Sides
                 if(_size != value)
                 {
                     _size = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Size)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(Size));
+                    OnPropertyChanged(nameof(Name));
+                    OnPropertyChanged(nameof(Price));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
-        }
-
-        /// <summary>
-        /// Allows derived Side classes to use the PropertyChanged event
-        /// </summary>
-        /// <param name="propertyName">The name of the property to notify</param>
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

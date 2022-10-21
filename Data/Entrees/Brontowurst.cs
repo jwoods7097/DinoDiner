@@ -10,13 +10,8 @@ namespace DinoDiner.Data.Entrees
     /// <summary>
     /// A class representing a Brontowurst brautwurst
     /// </summary>
-    public class Brontowurst : Entree, INotifyPropertyChanged
+    public class Brontowurst : Entree
     {
-        /// <summary>
-        /// PropertyChanged event handler
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
         /// <summary>
         /// The name of the brautwurst
         /// </summary>
@@ -49,7 +44,7 @@ namespace DinoDiner.Data.Entrees
                 {
                     _onions = value;
                     AddToSpecialInstructions("Onions", _onions);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Onions)));
+                    OnPropertyChanged(nameof(Onions));
                 }
             }
         }
@@ -71,7 +66,7 @@ namespace DinoDiner.Data.Entrees
                 {
                     _peppers = value;
                     AddToSpecialInstructions("Peppers", _peppers);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Peppers)));
+                    OnPropertyChanged(nameof(Peppers));
                 }
             }
         }

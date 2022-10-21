@@ -11,13 +11,8 @@ namespace DinoDiner.Data.Drinks
     /// <summary>
     /// A base class for all drinks sold at Dino Diner
     /// </summary>
-    public abstract class Drink : MenuItem, INotifyPropertyChanged
+    public abstract class Drink : MenuItem
     {
-        /// <summary>
-        /// PropertyChanged event handler
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
         /// <summary>
         /// The serving size of the Drink
         /// </summary>
@@ -34,24 +29,15 @@ namespace DinoDiner.Data.Drinks
                 if (_size != value)
                 {
                     _size = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Size)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
+                    OnPropertyChanged(nameof(Size));
+                    OnPropertyChanged(nameof(Name));
+                    OnPropertyChanged(nameof(Price));
                     if(this is Plilosoda)
                     {
-                        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                        OnPropertyChanged(nameof(Calories));
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Allows derived Drink classes to use the PropertyChanged event
-        /// </summary>
-        /// <param name="propertyName">The name of the property to notify</param>
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

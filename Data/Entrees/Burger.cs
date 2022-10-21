@@ -10,13 +10,8 @@ namespace DinoDiner.Data.Entrees
     /// <summary>
     /// A base class representing the customizable burger
     /// </summary>
-    public class Burger : Entree, INotifyPropertyChanged
+    public class Burger : Entree
     {
-        /// <summary>
-        /// PropertyChanged event handler
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
         /// <summary>
         /// The name of the burger
         /// </summary>
@@ -108,9 +103,9 @@ namespace DinoDiner.Data.Entrees
                         SpecialInstructions.Add(_patties == 1 ? $"{_patties} Patty" : $"{_patties} Patties");
                     }
 
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Patties)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(Patties));
+                    OnPropertyChanged(nameof(Price));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }
@@ -132,9 +127,9 @@ namespace DinoDiner.Data.Entrees
                 {
                     _ketchup = value;
                     AddToSpecialInstructions("Ketchup", _ketchup);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Ketchup)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(Ketchup));
+                    OnPropertyChanged(nameof(Price));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }
@@ -156,9 +151,9 @@ namespace DinoDiner.Data.Entrees
                 {
                     _mustard = value;
                     AddToSpecialInstructions("Mustard", _mustard);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mustard)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(Mustard));
+                    OnPropertyChanged(nameof(Price));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }
@@ -180,9 +175,9 @@ namespace DinoDiner.Data.Entrees
                 {
                     _pickle = value;
                     AddToSpecialInstructions("Pickle", _pickle);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Pickle)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(Pickle));
+                    OnPropertyChanged(nameof(Price));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }
@@ -204,9 +199,9 @@ namespace DinoDiner.Data.Entrees
                 {
                     _mayo = value;
                     AddToSpecialInstructions("Mayo", _mayo);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mayo)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(Mayo));
+                    OnPropertyChanged(nameof(Price));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }
@@ -228,9 +223,9 @@ namespace DinoDiner.Data.Entrees
                 {
                     _bbq = value;
                     AddToSpecialInstructions("BBQ", _bbq);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(BBQ)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(BBQ));
+                    OnPropertyChanged(nameof(Price));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }
@@ -252,9 +247,9 @@ namespace DinoDiner.Data.Entrees
                 {
                     _onion = value;
                     AddToSpecialInstructions("Onion", _onion);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Onion)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(Onion));
+                    OnPropertyChanged(nameof(Price));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }
@@ -276,9 +271,9 @@ namespace DinoDiner.Data.Entrees
                 {
                     _tomato = value;
                     AddToSpecialInstructions("Tomato", _tomato);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Tomato)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(Tomato));
+                    OnPropertyChanged(nameof(Price));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }
@@ -300,9 +295,9 @@ namespace DinoDiner.Data.Entrees
                 {
                     _lettuce = value;
                     AddToSpecialInstructions("Lettuce", _lettuce);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Lettuce)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(Lettuce));
+                    OnPropertyChanged(nameof(Price));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }
@@ -324,9 +319,9 @@ namespace DinoDiner.Data.Entrees
                 {
                     _americanCheese = value;
                     AddToSpecialInstructions("American Cheese", _americanCheese);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AmericanCheese)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(AmericanCheese));
+                    OnPropertyChanged(nameof(Price));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }
@@ -348,9 +343,9 @@ namespace DinoDiner.Data.Entrees
                 {
                     _swissCheese = value;
                     AddToSpecialInstructions("Swiss Cheese", _swissCheese);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SwissCheese)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(SwissCheese));
+                    OnPropertyChanged(nameof(Price));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }
@@ -372,9 +367,9 @@ namespace DinoDiner.Data.Entrees
                 {
                     _bacon = value;
                     AddToSpecialInstructions("Bacon", _bacon);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Bacon)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(Bacon));
+                    OnPropertyChanged(nameof(Price));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }
@@ -396,9 +391,9 @@ namespace DinoDiner.Data.Entrees
                 {
                     _mushrooms = value;
                     AddToSpecialInstructions("Mushrooms", _mushrooms);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mushrooms)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(Mushrooms));
+                    OnPropertyChanged(nameof(Price));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }

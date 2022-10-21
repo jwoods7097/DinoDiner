@@ -5,13 +5,8 @@ namespace DinoDiner.Data.Entrees
     /// <summary>
     /// A class representing a Prehistoric PBJ sandwich
     /// </summary>
-    public class PrehistoricPBJ : Entree, INotifyPropertyChanged
+    public class PrehistoricPBJ : Entree
     {
-        /// <summary>
-        /// PropertyChanged event handler
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
         /// <summary>
         /// Indicates if the PBJ was made with peanut butter
         /// </summary>
@@ -29,8 +24,8 @@ namespace DinoDiner.Data.Entrees
                 {
                     _peanutButter = value;
                     AddToSpecialInstructions("Peanut Butter", _peanutButter);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PeanutButter)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(PeanutButter));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }
@@ -52,8 +47,8 @@ namespace DinoDiner.Data.Entrees
                 {
                     _jelly = value;
                     AddToSpecialInstructions("Jelly", _jelly);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Jelly)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(Jelly));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }
@@ -99,7 +94,7 @@ namespace DinoDiner.Data.Entrees
                         }
                     }
 
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Toasted)));
+                    OnPropertyChanged(nameof(Toasted));
                 }
             }
         }

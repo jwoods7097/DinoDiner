@@ -11,13 +11,8 @@ namespace DinoDiner.Data.Entrees
     /// <summary>
     /// A class representing Pterodactyl Wings chicken wings
     /// </summary>
-    public class PterodactylWings : Entree, INotifyPropertyChanged
+    public class PterodactylWings : Entree
     {
-        /// <summary>
-        /// PropertyChanged event handler
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
         /// <summary>
         /// The name of the wings
         /// </summary>
@@ -46,9 +41,9 @@ namespace DinoDiner.Data.Entrees
                 if(_sauce != value)
                 {
                     _sauce = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Sauce)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Calories)));
+                    OnPropertyChanged(nameof(Sauce));
+                    OnPropertyChanged(nameof(Name));
+                    OnPropertyChanged(nameof(Calories));
                 }
             }
         }

@@ -16,11 +16,6 @@ namespace DinoDiner.Data
     public class Order : ObservableCollection<MenuItem>
     {
         /// <summary>
-        /// Backling list of MenuItems for this order
-        /// </summary>
-        private List<MenuItem> _items = new List<MenuItem>();
-
-        /// <summary>
         /// The sales tax rate as a percentage
         /// </summary>
         public decimal SalesTaxRate { get; set; } = 0.09m;

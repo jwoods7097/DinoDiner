@@ -43,7 +43,7 @@
         <ListView Name="OrderListView" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>

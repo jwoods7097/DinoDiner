@@ -39,14 +39,14 @@
                 New Order
             </TextBlock>
         </Button>
-        <Button Name="DeleteButton" Grid.Row="1" Grid.Column="1" IsEnabled="False">
+        <Button Name="CancelDeleteButton" Grid.Row="1" Grid.Column="1" IsEnabled="False">
             <TextBlock>
-                Delete Item
+                Cancel
             </TextBlock>
         </Button>
-        <Button Name="AddButton" Grid.Row="1" Grid.Column="2" IsEnabled="False">
+        <Button Name="AddEditButton" Grid.Row="1" Grid.Column="2" IsEnabled="False">
             <TextBlock>
-                Add Item
+                Add
             </TextBlock>
         </Button>
         <Button Name="CompleteButton" Grid.Row="1" Grid.Column="3">

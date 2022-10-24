@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="DinoDiner.PointOfSale.PaymentOptionsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DinoDiner.PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="640">
+    <UserControl.Resources>
+        <Style x:Key="headerTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="textStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Style="{StaticResource headerTextStyle}">
+            Choose a Payment Option:
+        </TextBlock>
+        <Button Name="CardButton"  Grid.Row="1" Margin="20" MaxWidth="350">
+            <TextBlock Style="{StaticResource headerTextStyle}">
+                Credit/Debit
+            </TextBlock>
+        </Button>
+        <Button Name="CashButton" Grid.Row="2" Margin="20" MaxWidth="350">
+            <TextBlock Style="{StaticResource headerTextStyle}">
+                Cash
+            </TextBlock>
+        </Button>
+    </Grid>
+</UserControl>

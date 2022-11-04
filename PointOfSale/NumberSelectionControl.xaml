@@ -33,7 +33,7 @@
                 -
             </TextBlock>
         </Button>
-        <TextBox Name="NumberTextBox" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Stretch" Margin="2" FontSize="30" IsReadOnly="True" MinWidth="80" Text="{Binding Path=Value, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:NumberSelectionControl}}"/>
+        <TextBox Name="NumberTextBox" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Margin="2" FontSize="30" IsReadOnly="True" MinWidth="80" Text="{Binding Path=Value, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:NumberSelectionControl}}"/>
         <Button Name="IncrementButton" Grid.Column="2" Click="IncrementButtonClicked">
             <TextBlock>
                 +

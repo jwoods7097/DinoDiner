@@ -20,9 +20,10 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="7*"/>
-            <RowDefinition Height="7*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
         <TextBlock Style="{StaticResource headerTextStyle}">
@@ -38,5 +39,6 @@
                 Cash
             </TextBlock>
         </Button>
+        <TextBlock Name="ErrorTextBlock" Style="{StaticResource headerTextStyle}" Grid.Row="3" Foreground="Red"/>
     </Grid>
 </UserControl>

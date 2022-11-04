@@ -80,6 +80,24 @@ namespace DinoDiner.PointOfSale
                         // Print recipt
                         OrderSummary.DataContext = new Order();
                     }
+                    else if(SelectionContainer.Child is PaymentOptionsControl poc)
+                    {
+                        poc.ErrorTextBlock.Text = (result) switch
+                        {
+                            CardTransactionResult.Declined => "Error! Card declined!",
+                            CardTransactionResult.ReadError => "Error! Could not read card!",
+                            CardTransactionResult.InsufficientFunds => "Error! Insufficient funds!",
+                            CardTransactionResult.IncorrectPin => "Error! Incorrect PIN!",
+                            _ => "Error!"
+                        };
+                    }
+                }
+                else if(button.Name == "CompleteButton")
+                {
+                    if(SelectionContainer.Child is CashDrawerControl)
+                    {
+                        OrderSummary.DataContext = new Order();
+                    }
                 }
 
                 // Screen Switching
@@ -96,13 +114,32 @@ namespace DinoDiner.PointOfSale
                             CancelDeleteButton.IsEnabled = false;
                             AddEditButton.Visibility = Visibility.Visible;
                         }
+                        ChangeButtonText(CompleteButton, "Complete Order");
+                        NewButton.Visibility = Visibility.Visible;
                         break;
                     case "CompleteButton":
-                        SelectionContainer.Child = new PaymentOptionsControl();
-                        CancelDeleteButton.IsEnabled = true;
-                        AddEditButton.Visibility = Visibility.Hidden;
+                        if(SelectionContainer.Child is CashDrawerControl)
+                        {
+                            SelectionContainer.Child = MenuSelect;
+                            AddEditButton.IsEnabled = false;
+                            CancelDeleteButton.IsEnabled = false;
+                            AddEditButton.Visibility = Visibility.Visible;
+                            NewButton.Visibility = Visibility.Visible;
+                            ChangeButtonText(CompleteButton, "Complete Order");
+                        }
+                        else
+                        {
+                            SelectionContainer.Child = new PaymentOptionsControl();
+                            CancelDeleteButton.IsEnabled = true;
+                            AddEditButton.Visibility = Visibility.Hidden;
+                        }
                         break;
                     case "CashButton":
+                        SelectionContainer.Child = new CashDrawerControl();
+                        CancelDeleteButton.IsEnabled = true;
+                        ChangeButtonText(CompleteButton, "Complete Sale");
+                        NewButton.Visibility = Visibility.Hidden;
+                        AddEditButton.Visibility = Visibility.Hidden;
                         break;
                     default:
                         ItemCustomization = new ItemCustomizationControl(button.Name);

@@ -32,6 +32,11 @@ namespace DinoDiner.PointOfSale
         /// </summary>
         public ItemCustomizationControl ItemCustomization { get; set; }
 
+        /// <summary>
+        /// Stores the CashDrawControl for this point of sale
+        /// </summary>
+        public CashDrawerControl DrawerControl { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -94,9 +99,24 @@ namespace DinoDiner.PointOfSale
                 }
                 else if(button.Name == "CompleteButton")
                 {
-                    if(SelectionContainer.Child is CashDrawerControl)
+                    if(SelectionContainer.Child is CashDrawerControl cd && cd.DataContext is CashDrawerDataContext dc)
                     {
-                        OrderSummary.DataContext = new Order();
+                        if(dc.FullyPaid)
+                        {
+                            OrderSummary.DataContext = new Order();
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                }
+                else if(button.Name == "CashButton")
+                {
+                    DrawerControl = new CashDrawerControl();
+                    if (OrderSummary.DataContext is Order order)
+                    {
+                        DrawerControl.SetTotal(order.Total);
                     }
                 }
 
@@ -135,7 +155,7 @@ namespace DinoDiner.PointOfSale
                         }
                         break;
                     case "CashButton":
-                        SelectionContainer.Child = new CashDrawerControl();
+                        SelectionContainer.Child = DrawerControl;
                         CancelDeleteButton.IsEnabled = true;
                         ChangeButtonText(CompleteButton, "Complete Sale");
                         NewButton.Visibility = Visibility.Hidden;

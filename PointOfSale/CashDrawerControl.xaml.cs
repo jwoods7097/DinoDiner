@@ -36,6 +36,7 @@ namespace DinoDiner.PointOfSale
             CreateCoin(DimeControl, 10);
             CreateCoin(NickelControl, 5);
             CreateCoin(PennyControl, 1);
+            DataContext = new CashDrawerDataContext();
         }
 
         /// <summary>
@@ -84,6 +85,18 @@ namespace DinoDiner.PointOfSale
                 {
                     tb.Text = $"{value}¢";
                 }
+            }
+        }
+
+        /// <summary>
+        /// Sets the order total
+        /// </summary>
+        /// <param name="orderTotal">The total cost of the order</param>
+        public void SetTotal(decimal orderTotal)
+        {
+            if(DataContext is CashDrawerDataContext dc)
+            {
+                dc.Total = orderTotal;
             }
         }
     }

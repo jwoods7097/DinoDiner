@@ -49,13 +49,13 @@
         <TextBlock Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="1" TextWrapping="Wrap" Style="{StaticResource textStyle}">
             Give as Change
         </TextBlock>
-        <local:CurrencyControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" x:Name="HundredsControl"/>
-        <local:CurrencyControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" x:Name="FiftiesControl"/>
-        <local:CurrencyControl Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" x:Name="TwentiesControl"/>
-        <local:CurrencyControl Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" x:Name="TensControl"/>
-        <local:CurrencyControl Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5" x:Name="FivesControl"/>
-        <local:CurrencyControl Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="5" x:Name="TwosControl"/>
-        <local:CurrencyControl Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="5" x:Name="OnesControl"/>
+        <local:CurrencyControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" x:Name="HundredsControl" CustomerQuantity="{Binding Path=CustomerHundreds}" ChangeQuantity="{Binding Path=ChangeHundreds}"/>
+        <local:CurrencyControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" x:Name="FiftiesControl" CustomerQuantity="{Binding Path=CustomerFifties}" ChangeQuantity="{Binding Path=ChangeFifties}"/>
+        <local:CurrencyControl Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" x:Name="TwentiesControl" CustomerQuantity="{Binding Path=CustomerTwenties}" ChangeQuantity="{Binding Path=ChangeTwenties}"/>
+        <local:CurrencyControl Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" x:Name="TensControl" CustomerQuantity="{Binding Path=CustomerTens}" ChangeQuantity="{Binding Path=ChangeTens}"/>
+        <local:CurrencyControl Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5" x:Name="FivesControl" CustomerQuantity="{Binding Path=CustomerFives}" ChangeQuantity="{Binding Path=ChangeFives}"/>
+        <local:CurrencyControl Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="5" x:Name="TwosControl" CustomerQuantity="{Binding Path=CustomerTwos}" ChangeQuantity="{Binding Path=ChangeTwos}"/>
+        <local:CurrencyControl Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="5" x:Name="OnesControl" CustomerQuantity="{Binding Path=CustomerOnes}" ChangeQuantity="{Binding Path=ChangeOnes}"/>
 
         <TextBlock Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="3" Style="{StaticResource textStyle}">
             From Customer
@@ -63,30 +63,30 @@
         <TextBlock Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="1" TextWrapping="Wrap" Style="{StaticResource textStyle}">
             Give as Change
         </TextBlock>
-        <local:CurrencyControl Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="5" x:Name="DollarControl"/>
-        <local:CurrencyControl Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="5" x:Name="HalfDollarControl"/>
-        <local:CurrencyControl Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="5" x:Name="QuarterControl"/>
-        <local:CurrencyControl Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="5" x:Name="DimeControl"/>
-        <local:CurrencyControl Grid.Row="6" Grid.Column="5" Grid.ColumnSpan="5" x:Name="NickelControl"/>
-        <local:CurrencyControl Grid.Row="7" Grid.Column="5" Grid.ColumnSpan="5" x:Name="PennyControl"/>
+        <local:CurrencyControl Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="5" x:Name="DollarControl" CustomerQuantity="{Binding Path=CustomerDollars}" ChangeQuantity="{Binding Path=ChangeDollars}"/>
+        <local:CurrencyControl Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="5" x:Name="HalfDollarControl" CustomerQuantity="{Binding Path=CustomerHalfDollars}" ChangeQuantity="{Binding Path=ChangeHalfDollars}"/>
+        <local:CurrencyControl Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="5" x:Name="QuarterControl" CustomerQuantity="{Binding Path=CustomerQuarters}" ChangeQuantity="{Binding Path=ChangeQuarters}"/>
+        <local:CurrencyControl Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="5" x:Name="DimeControl" CustomerQuantity="{Binding Path=CustomerDimes}" ChangeQuantity="{Binding Path=ChangeDimes}"/>
+        <local:CurrencyControl Grid.Row="6" Grid.Column="5" Grid.ColumnSpan="5" x:Name="NickelControl" CustomerQuantity="{Binding Path=CustomerNickels}" ChangeQuantity="{Binding Path=ChangeNickels}"/>
+        <local:CurrencyControl Grid.Row="7" Grid.Column="5" Grid.ColumnSpan="5" x:Name="PennyControl" CustomerQuantity="{Binding Path=CustomerPennies}" ChangeQuantity="{Binding Path=ChangePennies}"/>
 
         <TextBlock Grid.Row="8" Grid.Column="0" TextWrapping="Wrap" Style="{StaticResource textStyle}">
                 Total Sale
         </TextBlock>
-        <TextBox Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Margin="5" IsReadOnly="True">
-
-        </TextBox>
+        <Border Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Margin="5" BorderThickness="1" BorderBrush="LightGray">
+            <TextBlock VerticalAlignment="Stretch" Style="{StaticResource headerTextStyle}" Text="{Binding Path=Total, StringFormat={}{0:c}}"/>
+        </Border>
         <TextBlock Grid.Row="8" Grid.Column="4" TextWrapping="Wrap" Style="{StaticResource textStyle}">
                 Amount Due
         </TextBlock>
-        <TextBox Grid.Row="8" Grid.Column="5" Grid.ColumnSpan="2" Margin="5" IsReadOnly="True" Background="Red" Foreground="White">
-
-        </TextBox>
+        <Border Grid.Row="8" Grid.Column="5" Grid.ColumnSpan="2" Margin="5" BorderThickness="1" BorderBrush="LightGray">
+            <TextBlock Background="Red" Foreground="White" VerticalAlignment="Stretch" Style="{StaticResource headerTextStyle}" Text="{Binding Path=AmountDue, StringFormat={}{0:c}}"/>
+        </Border>
         <TextBlock Grid.Row="8" Grid.Column="7" TextWrapping="Wrap" Style="{StaticResource textStyle}">
                 Change Owed
         </TextBlock>
-        <TextBox Grid.Row="8" Grid.Column="8" Grid.ColumnSpan="2" Margin="5" IsReadOnly="True" Background="ForestGreen" Foreground="White">
-
-        </TextBox>
+        <Border Grid.Row="8" Grid.Column="8" Grid.ColumnSpan="2" Margin="5" BorderThickness="1" BorderBrush="LightGray">
+            <TextBlock Background="ForestGreen" Foreground="White" VerticalAlignment="Stretch" Style="{StaticResource headerTextStyle}" Text="{Binding Path=ChangeOwed, StringFormat={}{0:c}}"/>
+        </Border>
     </Grid>
 </UserControl>

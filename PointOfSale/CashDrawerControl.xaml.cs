@@ -44,7 +44,7 @@ namespace DinoDiner.PointOfSale
         /// </summary>
         /// <param name="control">The CurrencyControl to add the graphic to</param>
         /// <param name="value">The value of the bill in dollars</param>
-        private void CreateBill(CurrencyControl control, int value)
+        private void CreateBill(CurrencyControl control, uint value)
         {
             control.CurrencyGraphic.Children.Insert(0, new Rectangle()
             {
@@ -65,7 +65,7 @@ namespace DinoDiner.PointOfSale
         /// </summary>
         /// <param name="control">The CurrencyControl to add the graphic to</param>
         /// <param name="value">The value of the coin in cents</param>
-        private void CreateCoin(CurrencyControl control, int value)
+        private void CreateCoin(CurrencyControl control, uint value)
         {
             control.CurrencyGraphic.Children.Insert(0, new Ellipse()
             {

@@ -82,7 +82,7 @@ namespace DinoDiner.PointOfSale
                     result = CardReader.RunCard();
                     if(result == CardTransactionResult.Approved)
                     {
-                        // Print recipt
+                        PrintReceipt(true);
                         OrderSummary.DataContext = new Order();
                     }
                     else if(SelectionContainer.Child is PaymentOptionsControl poc)
@@ -104,6 +104,7 @@ namespace DinoDiner.PointOfSale
                         if(dc.FullyPaid)
                         {
                             dc.FinalizeSale();
+                            PrintReceipt(false);
                             OrderSummary.DataContext = new Order();
                         }
                         else
@@ -134,6 +135,7 @@ namespace DinoDiner.PointOfSale
                             AddEditButton.IsEnabled = false;
                             CancelDeleteButton.IsEnabled = false;
                             AddEditButton.Visibility = Visibility.Visible;
+                            OrderSummary.OrderListView.IsHitTestVisible = true;
                         }
                         ChangeButtonText(CompleteButton, "Complete Order");
                         NewButton.Visibility = Visibility.Visible;
@@ -147,12 +149,14 @@ namespace DinoDiner.PointOfSale
                             AddEditButton.Visibility = Visibility.Visible;
                             NewButton.Visibility = Visibility.Visible;
                             ChangeButtonText(CompleteButton, "Complete Order");
+                            OrderSummary.OrderListView.IsHitTestVisible = true;
                         }
                         else
                         {
                             SelectionContainer.Child = new PaymentOptionsControl();
                             CancelDeleteButton.IsEnabled = true;
                             AddEditButton.Visibility = Visibility.Hidden;
+                            OrderSummary.OrderListView.IsHitTestVisible = false;
                         }
                         break;
                     case "CashButton":
@@ -183,7 +187,7 @@ namespace DinoDiner.PointOfSale
         /// <param name="e">Routed event arguments</param>
         private void HandleSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(e.AddedItems.Count > 0 && e.AddedItems[0] is Data.MenuItem item)
+            if (e.AddedItems.Count > 0 && e.AddedItems[0] is Data.MenuItem item)
             {
                 ItemCustomization = new ItemCustomizationControl(item);
                 SelectionContainer.Child = ItemCustomization;
@@ -205,6 +209,44 @@ namespace DinoDiner.PointOfSale
             {
                 tb.Text = text;
             }
+        }
+
+        /// <summary>
+        /// Prints the receipt for the order
+        /// </summary>
+        /// <param name="isCard">Whether the order was paid by card</param>
+        private void PrintReceipt(bool isCard)
+        {
+            if(OrderSummary.DataContext is Order order)
+            {
+                ReceiptPrinter.PrintLine($"Order #{order.Number}");
+                ReceiptPrinter.PrintLine($"Sale completed {DateTime.Now}");
+                ReceiptPrinter.PrintLine("");
+                foreach(Data.MenuItem i in order)
+                {
+                    ReceiptPrinter.PrintLine(String.Format("{0}: {1:c}", i.Name, i.Price));
+                    foreach(string s in i.SpecialInstructions)
+                    {
+                        ReceiptPrinter.PrintLine($" - {s}");
+                    }
+                }
+                ReceiptPrinter.PrintLine("");
+                ReceiptPrinter.PrintLine(String.Format("Subtotal: {0:c}", order.Subtotal));
+                ReceiptPrinter.PrintLine(String.Format("Tax: {0:c}", order.Tax));
+                ReceiptPrinter.PrintLine(String.Format("Total: {0:c}", order.Total));
+                ReceiptPrinter.PrintLine("");
+                if(isCard)
+                {
+                    ReceiptPrinter.PrintLine("Paid with Card");
+                    ReceiptPrinter.PrintLine("Change owed: $0.00");
+                }
+                else if(DrawerControl.DataContext is CashDrawerDataContext dc)
+                {
+                    ReceiptPrinter.PrintLine("Paid with Cash");
+                    ReceiptPrinter.PrintLine(String.Format("Change owed: {0:c}", dc.ChangeOwed));
+                }
+            }
+            ReceiptPrinter.CutTape();
         }
     }
 }

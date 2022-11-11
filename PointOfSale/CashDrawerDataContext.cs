@@ -33,7 +33,6 @@ namespace DinoDiner.PointOfSale
             {
                 if(_customerHundreds != value)
                 {
-                    CashDrawer.Hundreds += value - _customerHundreds;
                     _customerHundreds = value;
                     CalculateChange();
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CustomerHundreds)));
@@ -59,7 +58,6 @@ namespace DinoDiner.PointOfSale
             {
                 if (_customerFifties != value)
                 {
-                    CashDrawer.Fifties += value - _customerFifties;
                     _customerFifties = value;
                     CalculateChange();
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CustomerFifties)));
@@ -85,7 +83,6 @@ namespace DinoDiner.PointOfSale
             {
                 if (_customerTwenties != value)
                 {
-                    CashDrawer.Twenties += value - _customerTwenties;
                     _customerTwenties = value;
                     CalculateChange();
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CustomerTwenties)));
@@ -111,7 +108,6 @@ namespace DinoDiner.PointOfSale
             {
                 if (_customerTens != value)
                 {
-                    CashDrawer.Tens += value - _customerTens;
                     _customerTens = value;
                     CalculateChange();
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CustomerTens)));
@@ -137,7 +133,6 @@ namespace DinoDiner.PointOfSale
             {
                 if (_customerFives != value)
                 {
-                    CashDrawer.Fives += value - _customerFives;
                     _customerFives = value;
                     CalculateChange();
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CustomerFives)));
@@ -163,7 +158,6 @@ namespace DinoDiner.PointOfSale
             {
                 if (_customerTwos != value)
                 {
-                    CashDrawer.Twos += value - _customerTwos;
                     _customerTwos = value;
                     CalculateChange();
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CustomerTwos)));
@@ -189,7 +183,6 @@ namespace DinoDiner.PointOfSale
             {
                 if (_customerOnes != value)
                 {
-                    CashDrawer.Ones += value - _customerOnes;
                     _customerOnes = value;
                     CalculateChange();
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CustomerOnes)));
@@ -215,7 +208,6 @@ namespace DinoDiner.PointOfSale
             {
                 if (_customerDollars != value)
                 {
-                    CashDrawer.DollarCoins += value - _customerDollars;
                     _customerDollars = value;
                     CalculateChange();
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CustomerDollars)));
@@ -241,7 +233,6 @@ namespace DinoDiner.PointOfSale
             {
                 if (_customerHalfDollars != value)
                 {
-                    CashDrawer.HalfDollarCoins += value - _customerHalfDollars;
                     _customerHalfDollars = value;
                     CalculateChange();
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CustomerHalfDollars)));
@@ -267,7 +258,6 @@ namespace DinoDiner.PointOfSale
             {
                 if (_customerQuarters != value)
                 {
-                    CashDrawer.Quarters += value - _customerQuarters;
                     _customerQuarters = value;
                     CalculateChange();
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CustomerQuarters)));
@@ -293,7 +283,6 @@ namespace DinoDiner.PointOfSale
             {
                 if (_customerDimes != value)
                 {
-                    CashDrawer.Dimes += value - _customerDimes;
                     _customerDimes = value;
                     CalculateChange();
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CustomerDimes)));
@@ -319,7 +308,6 @@ namespace DinoDiner.PointOfSale
             {
                 if (_customerNickels != value)
                 {
-                    CashDrawer.Nickles += value - _customerNickels;
                     _customerNickels = value;
                     CalculateChange();
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CustomerNickels)));
@@ -345,7 +333,6 @@ namespace DinoDiner.PointOfSale
             {
                 if (_customerPennies != value)
                 {
-                    CashDrawer.Pennies += value - _customerPennies;
                     _customerPennies = value;
                     CalculateChange();
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CustomerPennies)));
@@ -717,6 +704,30 @@ namespace DinoDiner.PointOfSale
             ChangeNickels = Math.Min(CashDrawer.Nickles, (uint)(change / 0.05m));
             change -= ChangeNickels * 0.05m;
             ChangePennies = Math.Min(CashDrawer.Pennies, (uint)(change / 0.01m));
+        }
+
+        /// <summary>
+        /// Opens the cash drawer and updates the values for all the currencies in it
+        /// </summary>
+        public void FinalizeSale()
+        {
+            if(FullyPaid)
+            {
+                CashDrawer.Open();
+                CashDrawer.Hundreds += CustomerHundreds - ChangeHundreds;
+                CashDrawer.Fifties += CustomerFifties - ChangeFifties;
+                CashDrawer.Twenties += CustomerTwenties - ChangeTwenties;
+                CashDrawer.Tens += CustomerTens - ChangeTens;
+                CashDrawer.Fives += CustomerFives - ChangeFives;
+                CashDrawer.Twos += CustomerTwos - ChangeTwos;
+                CashDrawer.Ones += CustomerOnes - ChangeOnes;
+                CashDrawer.DollarCoins += CustomerDollars - ChangeDollars;
+                CashDrawer.HalfDollarCoins += CustomerHalfDollars - ChangeHalfDollars;
+                CashDrawer.Quarters += CustomerQuarters - ChangeQuarters;
+                CashDrawer.Dimes += CustomerDimes - ChangeDimes;
+                CashDrawer.Nickles += CustomerNickels - ChangeNickels;
+                CashDrawer.Pennies += CustomerPennies - ChangePennies;
+            }
         }
     }
 }

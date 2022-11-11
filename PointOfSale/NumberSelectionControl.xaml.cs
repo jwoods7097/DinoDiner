@@ -46,7 +46,10 @@ namespace DinoDiner.PointOfSale
         /// <param name="e">Routed event arguments</param>
         private void DecrementButtonClicked(object sender, RoutedEventArgs e)
         {
-            Value--;
+            if(Value != 0)
+            {
+                Value--;
+            }
             if(Value == 0)
             {
                 DecrementButton.IsEnabled = false;

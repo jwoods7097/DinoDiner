@@ -103,6 +103,7 @@ namespace DinoDiner.PointOfSale
                     {
                         if(dc.FullyPaid)
                         {
+                            dc.FinalizeSale();
                             OrderSummary.DataContext = new Order();
                         }
                         else

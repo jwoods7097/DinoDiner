@@ -44,7 +44,7 @@ namespace DinoDiner.Data
         /// <summary>
         /// The total price of this order
         /// </summary>
-        public decimal Total { get => Subtotal + Tax; }
+        public decimal Total { get => Decimal.Round(Subtotal + Tax, 2); }
 
         /// <summary>
         /// The total calories of all items in this order

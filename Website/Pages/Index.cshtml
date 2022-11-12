@@ -1,0 +1,47 @@
+﻿@page
+@using DinoDiner.Data;
+@model IndexModel
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<div class="text-center">
+    <h1>Dino Diner</h1>
+    <h4 style="color:gray"><i>Satisfying dino-sized appetites!</i></h4>
+</div>
+
+<h2 id="entrees">Entrees</h2>
+<div class="entree-item-container">
+    @foreach(MenuItem entree in Menu.Entrees)
+    {
+        <div class="menu-item">
+            <p><b>@entree.Name</b></p>
+            <p>Calories: @entree.Calories</p>
+            <p>@String.Format("Price: {0:c}", entree.Price)</p>
+        </div>
+    }
+</div>
+
+<h2 id="sides">Sides</h2>
+<div class="side-item-container">
+    @foreach(MenuItem side in Menu.Sides)
+    {
+        <div class="menu-item">
+            <p><b>@side.Name</b></p>
+            <p>Calories: @side.Calories</p>
+            <p>@String.Format("Price: {0:c}", side.Price)</p>
+        </div>
+    }
+</div>
+
+<h2 id="drinks">Drinks</h2>
+<div class="drink-item-container">
+    @foreach(MenuItem drink in Menu.Drinks)
+    {
+        <div class="menu-item">
+            <p><b>@drink.Name</b></p>
+            <p>Calories: @drink.Calories</p>
+            <p>@String.Format("Price: {0:c}", drink.Price)</p>
+        </div>
+    }
+</div>

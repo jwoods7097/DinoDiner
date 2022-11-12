@@ -70,6 +70,10 @@ namespace DinoDiner.Data
                     {
                         drinks.Add(new Plilosoda() { Size = size, Flavor = flavor });
                     }
+                }
+                // Less efficient, but displays better on the webpage
+                foreach(ServingSize size in Enum.GetValues(typeof(ServingSize)))
+                {
                     drinks.Add(new CretaceousCoffee() { Size = size });
                 }
                 return drinks;

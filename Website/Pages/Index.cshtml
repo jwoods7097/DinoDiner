@@ -1,5 +1,8 @@
 ﻿@page
 @using DinoDiner.Data;
+@using DinoDiner.Data.Entrees;
+@using DinoDiner.Data.Sides;
+@using DinoDiner.Data.Drinks;
 @model IndexModel
 @{
     ViewData["Title"] = "Menu";
@@ -10,38 +13,81 @@
     <h4 style="color:gray"><i>Satisfying dino-sized appetites!</i></h4>
 </div>
 
-<h2 id="entrees">Entrees</h2>
-<div class="entree-item-container">
-    @foreach(MenuItem entree in Menu.Entrees)
-    {
-        <div class="menu-item">
-            <p><b>@entree.Name</b></p>
-            <p>Calories: @entree.Calories</p>
-            <p>@String.Format("Price: {0:c}", entree.Price)</p>
+<div class="content">
+    <form>
+        <fieldset>
+            <legend>Name</legend>
+            <input type="text" name="searchTerms" value="@Model.SearchTerms" />
+            <input type="submit" value="Search">
+        </fieldset>
+        <fieldset>
+            <legend>Exclude Item Type</legend>
+            @foreach(string type in new[]{"Entree", "Side", "Drink"}) {
+                <label>
+                    <input type="checkbox" name="itemTypes" value="@type" checked="@Model.ItemTypes.Contains(type)"/>
+                    @type
+                </label>
+            }
+        </fieldset>
+        <fieldset>
+            <legend>Calories</legend>
+            Min:
+            <input name="caloriesMin" type="number" min="0" max="1000" step="1" value="@Model.CaloriesMin"/>
+            Max:
+            <input name="caloriesMax" type="number" min="0" max="1000" step="1" value="@Model.CaloriesMax"/>
+        </fieldset>
+        <fieldset>
+            <legend>Price</legend>
+            Min:
+            <input name="priceMin" type="number" min="0" max="10.00" step="0.01" value="@Model.PriceMin"/>
+            Max:
+            <input name="priceMax" type="number" min="0" max="10.00" step="0.01" value="@Model.PriceMax"/>
+        </fieldset>
+    </form>
+    <div class="results">
+        <h2 id="entrees">Entrees</h2>
+        <div class="entree-item-container">
+            @foreach(MenuItem item in Model.Items)
+            {
+                @if(item is Entree)
+                {
+                    <div class="menu-item">
+                        <p><b>@item.Name</b></p>
+                        <p>Calories: @item.Calories</p>
+                        <p>@String.Format("Price: {0:c}", item.Price)</p>
+                    </div>
+                }
+            }
         </div>
-    }
-</div>
 
-<h2 id="sides">Sides</h2>
-<div class="side-item-container">
-    @foreach(MenuItem side in Menu.Sides)
-    {
-        <div class="menu-item">
-            <p><b>@side.Name</b></p>
-            <p>Calories: @side.Calories</p>
-            <p>@String.Format("Price: {0:c}", side.Price)</p>
+        <h2 id="sides">Sides</h2>
+        <div class="side-item-container">
+            @foreach(MenuItem item in Model.Items)
+            {
+                @if(item is Side)
+                {
+                    <div class="menu-item">
+                        <p><b>@item.Name</b></p>
+                        <p>Calories: @item.Calories</p>
+                        <p>@String.Format("Price: {0:c}", item.Price)</p>
+                    </div>
+                }
+            }
         </div>
-    }
-</div>
 
-<h2 id="drinks">Drinks</h2>
-<div class="drink-item-container">
-    @foreach(MenuItem drink in Menu.Drinks)
-    {
-        <div class="menu-item">
-            <p><b>@drink.Name</b></p>
-            <p>Calories: @drink.Calories</p>
-            <p>@String.Format("Price: {0:c}", drink.Price)</p>
+        <h2 id="drinks">Drinks</h2>
+        <div class="drink-item-container">
+            @foreach(MenuItem item in Model.Items)
+            {
+                @if(item is Drink)
+                {
+                    <div class="menu-item">
+                        <p><b>@item.Name</b></p>
+                        <p>Calories: @item.Calories</p>
+                        <p>@String.Format("Price: {0:c}", item.Price)</p>
+                    </div>
+                }
+            }
         </div>
-    }
+    </div>
 </div>

@@ -72,28 +72,40 @@ body {
 
 .entree-item-container {
     display: grid;
-    grid-template-columns: repeat(5, 20%);
-    grid-template-rows: repeat(2, 50%);
+    grid-template-columns: repeat(5, auto);
+    grid-template-rows: repeat(2, auto);
     margin: 40px;
     gap: 30px 10px;
 }
 
 .side-item-container {
     display: grid;
-    grid-template-columns: repeat(4, 25%);
-    grid-template-rows: repeat(3, 33%);
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(3, auto);
     margin: 40px;
     gap: 30px 10px;
 }
 
 .drink-item-container {
     display: grid;
-    grid-template-columns: repeat(5, 20%);
-    grid-template-rows: repeat(4, 25%);
+    grid-template-columns: repeat(5, auto);
+    grid-template-rows: repeat(4, auto);
     margin: 40px;
     gap: 30px 10px;
 }
 
 .menu-item {
+    text-align: center;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto auto;
+}
+
+.results {
+    grid-column-start: 2;
+    grid-column-end: 4;
     text-align: center;
 }

@@ -18,11 +18,6 @@ namespace Website.Pages
     public class IndexModel : PageModel
     {
         /// <summary>
-        /// The logger for the page
-        /// </summary>
-        private readonly ILogger<IndexModel> _logger;
-
-        /// <summary>
         /// The parts of the item name to search for
         /// </summary>
         public string SearchTerms { get; set; }
@@ -30,7 +25,7 @@ namespace Website.Pages
         /// <summary>
         /// The types of items to filter
         /// </summary>
-        public string[] ItemTypes { get; set; }
+        public string[] ItemTypes { get; set; } = { nameof(Entree), nameof(Side), nameof(Drink) };
 
         /// <summary>
         /// The minimum calories to search for
@@ -57,9 +52,9 @@ namespace Website.Pages
         /// </summary>
         public IEnumerable<MenuItem> Items { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel()
         {
-            _logger = logger;
+            CaloriesMax = 10;
         }
 
         /// <summary>
@@ -74,7 +69,10 @@ namespace Website.Pages
         public void OnGet(string searchTerms, string[] itemTypes, uint? caloriesMin, uint? caloriesMax, decimal? priceMin, decimal? priceMax)
         {
             this.SearchTerms = searchTerms;
-            this.ItemTypes = itemTypes;
+            if(itemTypes != null && itemTypes.Length != 0)
+            {
+                this.ItemTypes = itemTypes;
+            }
             this.CaloriesMin = caloriesMin;
             this.CaloriesMax = caloriesMax;
             this.PriceMin = priceMin;
@@ -82,15 +80,15 @@ namespace Website.Pages
             Items = Menu.FullMenu;
             if (ItemTypes != null)
             {
-                if(ItemTypes.Contains("Entree"))
+                if(!ItemTypes.Contains(nameof(Entree)))
                 {
                     Items = Items.Where(item => item is not Entree);
                 }
-                if (ItemTypes.Contains("Side"))
+                if (!ItemTypes.Contains(nameof(Side)))
                 {
                     Items = Items.Where(item => item is not Side);
                 }
-                if (ItemTypes.Contains("Drink"))
+                if (!ItemTypes.Contains(nameof(Drink)))
                 {
                     Items = Items.Where(item => item is not Drink);
                 }

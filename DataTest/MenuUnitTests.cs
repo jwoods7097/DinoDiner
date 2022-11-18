@@ -1,4 +1,6 @@
-﻿namespace DataTest
+﻿using Website.Pages;
+
+namespace DataTest
 {
     /// <summary>
     /// Unit Tests for Menu
@@ -121,6 +123,105 @@
                 }
                 Assert.Contains(Menu.FullMenu, item => item is CretaceousCoffee cc && cc.Size == size);
             }
+        }
+
+        /// <summary>
+        /// Searching by name returns the correct results
+        /// </summary>
+        /// <param name="searchTerms">The terms to search for</param>
+        /// <param name="numItems">How many items should be returned from the query</param>
+        [Theory]
+        [InlineData(null, 40)]
+        [InlineData("", 40)]
+        [InlineData("burger", 3)]
+        [InlineData("BURGER", 3)]
+        [InlineData("Dino Nuggets", 1)]
+        [InlineData("Nuggets Dino", 1)]
+        [InlineData("large", 10)]
+        [InlineData("xxyxz", 0)]
+        public void SearchByNameWorksCorrectly(string searchTerms, int numItems)
+        {
+            IndexModel model = new();
+            model.OnGet(searchTerms, null, null, null, null, null);
+            Assert.Equal(numItems, model.Items.Count());
+        }
+
+        /// <summary>
+        /// Searching with item types should exclude those types
+        /// </summary>
+        /// <param name="itemTypes">The item types to exclude from the results</param>
+        [Theory]
+        [InlineData("")]
+        [InlineData(nameof(Entree))]
+        [InlineData(nameof(Side))]
+        [InlineData(nameof(Drink))]
+        [InlineData(nameof(Entree), nameof(Side))]
+        [InlineData(nameof(Entree), nameof(Drink))]
+        [InlineData(nameof(Drink), nameof(Side))]
+        [InlineData(nameof(Entree), nameof(Side), nameof(Drink))]
+        public void SearchByTypeWorksCorrectly(params string[] itemTypes)
+        {
+            IndexModel model = new();
+            model.OnGet(null, itemTypes, null, null, null, null);
+            foreach (MenuItem item in model.Items)
+            {
+                if (!itemTypes.Contains(nameof(Entree)))
+                {
+                    Assert.False(item is Entree);
+                }
+                if (!itemTypes.Contains(nameof(Side)))
+                {
+                    Assert.False(item is Side);
+                }
+                if (!itemTypes.Contains(nameof(Drink)))
+                {
+                    Assert.False(item is Drink);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searching by calories should return items with calories in the given range
+        /// </summary>
+        /// <param name="minCalories">The minimum calories to include</param>
+        /// <param name="maxCalories">The maximum calories to include</param>
+        /// <param name="numItems">How many items should be returned from the query</param>
+        [Theory]
+        [InlineData(null, null, 40)]
+        [InlineData(null, 200, 12)]
+        [InlineData(600, null, 5)]
+        [InlineData(512, 512, 1)]
+        [InlineData(200, 300, 6)]
+        [InlineData(200, 400, 13)]
+        [InlineData(200, 500, 17)]
+        [InlineData(200, 600, 23)]
+        public void SearchByCaloriesWorksCorrectly(int? minCalories, int? maxCalories, int numItems)
+        {
+            IndexModel model = new();
+            model.OnGet(null, null, (uint?)minCalories, (uint?)maxCalories, null, null);
+            Assert.Equal(numItems, model.Items.Count());
+        }
+
+        /// <summary>
+        /// Searching by price should return items with price in the given range
+        /// </summary>
+        /// <param name="minPrice">The minimum price to include</param>
+        /// <param name="maxPrice">The maximum price to include</param>
+        /// <param name="numItems">How many items should be returned from the query</param>
+        [Theory]
+        [InlineData(null, null, 40)]
+        [InlineData(null, 2.00, 15)]
+        [InlineData(6.00, null, 3)]
+        [InlineData(8.95, 8.95, 1)]
+        [InlineData(2.00, 3.00, 8)]
+        [InlineData(2.00, 4.00, 17)]
+        [InlineData(2.00, 5.00, 19)]
+        [InlineData(2.00, 6.00, 23)]
+        public void SearchByPriceWorksCorrectly(double? minPrice, double? maxPrice, int numItems)
+        {
+            IndexModel model = new();
+            model.OnGet(null, null, null, null, (decimal?)minPrice, (decimal?)maxPrice);
+            Assert.Equal(numItems, model.Items.Count());
         }
     }
 }

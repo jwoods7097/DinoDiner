@@ -52,11 +52,6 @@ namespace Website.Pages
         /// </summary>
         public IEnumerable<MenuItem> Items { get; set; }
 
-        public IndexModel()
-        {
-            CaloriesMax = 10;
-        }
-
         /// <summary>
         /// Parses HTML GET requests
         /// </summary>

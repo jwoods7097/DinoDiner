@@ -10,7 +10,7 @@
 
 <div class="text-center">
     <h1>Dino Diner</h1>
-    <h4 style="color:gray"><i>Satisfying dino-sized appetites!</i></h4>
+    <h4><i>Satisfying dino-sized appetites!</i></h4>
 </div>
 
 <div class="content">
@@ -45,58 +45,49 @@
         </fieldset>
     </form>
     <div class="results">
-        @if(Model.ItemTypes.Contains(nameof(Entree)))
+        @if(Model.Items.Where(item => item is Entree).Count() > 0)
         {
             <h2 id="entrees">Entrees</h2>
             <div class="entree-item-container">
-                @foreach(MenuItem item in Model.Items)
+                @foreach(MenuItem item in Model.Items.Where(item => item is Entree))
                 {
-                    @if(item is Entree)
-                    {
-                        <div class="menu-item">
-                            <p><b>@item.Name</b></p>
-                            <p>Calories: @item.Calories</p>
-                            <p>@String.Format("Price: {0:c}", item.Price)</p>
-                        </div>
-                    }
+                    <div class="menu-item">
+                        <p><b>@item.Name</b></p>
+                        <p>Calories: @item.Calories</p>
+                        <p>@String.Format("Price: {0:c}", item.Price)</p>
+                    </div>
                 }
             </div>   
         }
 
-        @if(Model.ItemTypes.Contains(nameof(Side)))
+        @if(Model.Items.Where(item => item is Side).Count() > 0)
         {
             <h2 id="sides">Sides</h2>
             <div class="side-item-container">
-                @foreach(MenuItem item in Model.Items)
+                @foreach(MenuItem item in Model.Items.Where(item => item is Side))
                 {
-                    @if(item is Side)
-                    {
-                        <div class="menu-item">
-                            <p><b>@item.Name</b></p>
-                            <p>Calories: @item.Calories</p>
-                            <p>@String.Format("Price: {0:c}", item.Price)</p>
-                        </div>
-                    }
+                    <div class="menu-item">
+                        <p><b>@item.Name</b></p>
+                        <p>Calories: @item.Calories</p>
+                        <p>@String.Format("Price: {0:c}", item.Price)</p>
+                    </div>
                 }
-            </div>
+            </div>   
         }
 
-        @if(Model.ItemTypes.Contains(nameof(Drink)))
+        @if(Model.Items.Where(item => item is Drink).Count() > 0)
         {
             <h2 id="drinks">Drinks</h2>
             <div class="drink-item-container">
-                @foreach(MenuItem item in Model.Items)
+                @foreach(MenuItem item in Model.Items.Where(item => item is Drink))
                 {
-                    @if(item is Drink)
-                    {
-                        <div class="menu-item">
-                            <p><b>@item.Name</b></p>
-                            <p>Calories: @item.Calories</p>
-                            <p>@String.Format("Price: {0:c}", item.Price)</p>
-                        </div>
-                    }
+                    <div class="menu-item">
+                        <p><b>@item.Name</b></p>
+                        <p>Calories: @item.Calories</p>
+                        <p>@String.Format("Price: {0:c}", item.Price)</p>
+                    </div>
                 }
-            </div>
+            </div>   
         }
     </div>
 </div>

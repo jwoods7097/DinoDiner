@@ -10,6 +10,7 @@ a.navbar-brand {
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
+  font-size: 20px;
 }
 
 .btn-primary {
@@ -59,8 +60,9 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #ACE0E6;
 }
 .footer {
   position: absolute;
@@ -68,6 +70,7 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+  background-color: white;
 }
 
 .entree-item-container {
@@ -102,10 +105,19 @@ body {
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-rows: auto auto;
+    margin-top: 50px;
 }
 
 .results {
     grid-column-start: 2;
     grid-column-end: 4;
     text-align: center;
+}
+
+p, h4 {
+    color: #006d74;
+}
+
+input[type=number] {
+    width: 75px;
 }
